@@ -6,6 +6,7 @@ let countTime = 0
 
 
 function click() {
+    
     countTime = new Date().getSeconds()
     document.querySelector("#clicker__counter").textContent = count++;  
   
@@ -14,9 +15,7 @@ function click() {
     } else {
         imgClick.width = 200
     }
-     
-    console.log(countTime)
     
-}
+    }
 
 
