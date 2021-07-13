@@ -1,3 +1,5 @@
+//! # Таймер обратного отсчёта
+
 let count = document.querySelector("#timer").textContent;
 function timer() {
   if (count > 0) {
