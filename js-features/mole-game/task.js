@@ -1,20 +1,29 @@
-const hole = document.querySelectorAll('.hole');
 const holeAll = document.querySelector(".hole-game");
-let dead = document.querySelector('#dead').textContent;
-let lost = document.querySelector("#lost").textContent;
-
-for (elem of hole) {
-    if (elem.className.includes("hole_has-mole"))
-    {
-     elem.addEventListener('click', deadMole)
-        console.log(elem)
-    } else {
-        elem.addEventListener("click", lostMole);
-    }
-}
-function deadMole() {    
+let lost = 0;
+let dead = 0;
+const findHole = (event) => {
+  if (event.target.classList.contains("hole_has-mole")) {
     document.querySelector("#dead").textContent = dead++;
-}
-function lostMole() {
-  document.querySelector("#lost").textContent = lost++;
+  } else {
+    document.querySelector("#lost").textContent = lost++;
+  }
+  win();  
+};
+
+holeAll.addEventListener("click", findHole);
+
+function win() {
+  if (dead === 10 && lost <= 5) {
+    alert("Вы выиграли");
+    dead = 0;
+    lost = 0;
+    document.querySelector("#dead").textContent = dead;
+    document.querySelector("#lost").textContent = lost;
+  } else if (lost > 5) {
+    alert("Вы проиграли");
+    dead = 0;
+    lost = 0;
+    document.querySelector("#dead").textContent = dead;
+    document.querySelector("#lost").textContent = lost;
+  }
 }
