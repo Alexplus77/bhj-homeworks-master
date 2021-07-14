@@ -3,7 +3,7 @@
 let count = document.querySelector("#timer").textContent;
 function timer() {
   if (count > 0) {
-    document.querySelector("#timer").textContent = `00:00:${count--}`;
+    document.querySelector("#timer").textContent = count--;
     return;
   }
   alert("Вы победили в конкурсе!");
