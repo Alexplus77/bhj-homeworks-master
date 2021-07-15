@@ -15,7 +15,7 @@ const menuItem = (event) => {
             
         else {
         menu_sub.className = "menu_sub";
-        return
+        
     }
     if (event.target.tagName === "A") {
        event.preventDefault();
