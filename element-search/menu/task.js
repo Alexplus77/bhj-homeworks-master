@@ -1,15 +1,21 @@
 const menu_sub = document.querySelector(".menu_sub");
-const menu = document.querySelector(".menu_main");
+const menu = document.querySelector(".menu__item").parentElement
+const link = document.querySelector("a");
 
-let link = document.querySelectorAll("a");
-console.log(menu);
-const menuItem = (event) => {
-  console.log((link = false));
-  console.log(event.target);
-  if (event.target.classList.contains("menu__item")) {
+
+console.log();
+//console.log(menu);
+const menuItem = (event) => { 
+    
+    console.log(event.target.classList);
+  if (event.target.classList.contains("menu__link")) {
     
     menu_sub.className = "menu_active";
-  }
+    }
+   if (event.target.tagName === 'A') {
+        event.preventDefault();      
+    } 
 };
+
 
 menu.addEventListener("click", menuItem);
