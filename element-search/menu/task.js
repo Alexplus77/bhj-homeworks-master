@@ -1,55 +1,20 @@
+const menuMain = document.querySelector(".menu_main");
+const [...menuSub] = document.querySelectorAll(".menu_sub");
 
-const menu_sub = document.querySelector(".menu .menu_sub");
-const menuItemParent = document.querySelector(".menu");
-
-
-const menuItem = (event) => {
-  
-  linkBlock(event)
-  
-  event.target.classList.contains("menu__link") && notActivMenu(event) 
-    ? activeMenu(event)
-    : notActivMenu(event);
- 
-    
-     if (event.target.tagName === "A") {
-       event.preventDefault();
-     }
-    
-};
-function activeMenu(event) {
-    
-    if (
-      event.target.parentElement
-        .querySelector(".menu_sub")
-        .className.includes("menu_active")
-    ) {
-      return true;
-    }
-  event.target.parentElement.querySelector(".menu_sub").className =
-        "menu menu_sub menu_active";    
-    
-}
-function notActivMenu(event) {
-  if (
-    !event.target.parentElement
-      .querySelector(".menu_sub")
-      .className.includes("menu_active") 
-  ) {
-    return true;
-  }
-  event.target.parentElement.querySelector(".menu_sub").className =
-    "menu menu_sub";
-}
-
-function linkBlock(event) {
-  if (
-    event.target.parentElement
-      .querySelector(".menu_sub")
-      .querySelector(".menu__item")
-      .querySelector(".menu__link").className.includes('menu__link')
-  ) {
-    return false
+function displaySubMenu(event) {
+  if (event.target.nextElementSibling.classList.contains("menu_sub")) {
+    event.preventDefault();
+    event.target.nextElementSibling.classList.toggle("menu_active");
   }
 }
-menuItemParent.addEventListener("click", menuItem);
+function hideSubMenu(event) {
+  if (event.target.closest(".menu__item")) {
+    return;
+  } else {
+    menuSub.forEach((elem) => {
+      elem.classList.remove("menu_active");
+    });
+  }
+}
+menuMain.addEventListener("click", displaySubMenu);
+document.addEventListener("click", hideSubMenu);
