@@ -2,7 +2,7 @@ const menuMain = document.querySelector(".menu_main");
 const [...menuSub] = document.querySelectorAll(".menu_sub");
 
 function displaySubMenu(event) {
-  if (event.target.nextElementSibling.classList.contains("menu_sub")) {
+  if (event.target.nextElementSibling) {
     event.preventDefault();
     menuSub.forEach((elem) => {
       if (elem === event.target.nextElementSibling) {
