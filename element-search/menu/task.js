@@ -19,11 +19,11 @@ function displaySubMenu(event) {
 function hideSubMenu(event) {
   if (event.target.closest(".menu__item")) {
     return;
-  } else {
+  } 
     menuSub.forEach((elem) => {
       elem.classList.remove("menu_active");
     });
   }
-}
+
 menuMain.addEventListener("click", displaySubMenu);
 document.addEventListener("click", hideSubMenu);
