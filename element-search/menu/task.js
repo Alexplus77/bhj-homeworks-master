@@ -5,7 +5,7 @@ function displaySubMenu(event) {
   if (event.target.nextElementSibling) {
     event.preventDefault();
     menuSub.forEach((elem) => {
-      if (elem === event.target.nextElementSibling) {
+      if (!elem === event.target.nextElementSibling) {
         return;
       }
       elem.classList.remove("menu_active");
