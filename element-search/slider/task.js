@@ -19,12 +19,10 @@ function renderDots() {
 renderDots();
 
 function show() {
-  sliderItems.forEach((elem) => {
+  sliderItems.forEach((elem, i) => {
     elem.classList.remove("slider__item_active");
-  });
-  sliderDots.forEach((elem) => {
-    elem.classList.remove("slider__dot_active");
-  });
+    sliderDots[i].classList.remove("slider__dot_active");
+  });  
   sliderItems[index].classList.add("slider__item_active");
   sliderDots[index].classList.add("slider__dot_active");
 }
