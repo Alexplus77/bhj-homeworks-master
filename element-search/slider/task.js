@@ -5,6 +5,7 @@ const [...sliderItems] = document.querySelectorAll(".slider__item");
 const [...sliderDots] = document.querySelectorAll(".slider__dot");
 
 let index = 0;
+
 function show() {
   sliderItems.forEach((elem) => {
     elem.classList.remove("slider__item_active");
