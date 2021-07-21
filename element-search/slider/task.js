@@ -17,21 +17,23 @@ function show() {
 }
 
 function setNext() {
-  show();
+  
   index++;
   if (index >= sliderItems.length) {
     index = 0;
   }
+  show();
 }
 
 function setPrev() {
-  show();
+  
   index--;
   if (index + 1 <= 0) {
     index = sliderItems.length - 1;
   } else {
     index;
   }
+  show();
 }
 
 sliderNext.addEventListener("click", setNext);
