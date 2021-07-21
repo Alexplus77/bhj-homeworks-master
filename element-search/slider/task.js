@@ -5,20 +5,21 @@ const [...sliderDots] = document.querySelectorAll(".slider__dot");
 
 let index = 0
 function show(event) {  
-  console.log(sliderItems); 
-  validatePic(event)  
+  console.log(sliderItems, index); 
+   calculate(event) 
    sliderItems.forEach(elem => {
     elem.classList.remove('slider__item_active')
   })
   sliderDots.forEach((elem) => {
     elem.classList.remove("slider__dot_active");
   });
+  
   sliderItems[index].classList.add("slider__item_active");
   sliderDots[index].classList.add("slider__dot_active");
   
 }
 
-function validatePic(event) {
+function calculate(event) {
   if (event.target.classList.contains("slider__arrow_next")) {   
      
         if ( index+1 < sliderItems.length) {        
@@ -34,9 +35,7 @@ function validatePic(event) {
          index = sliderItems.length;
      } else  {
        index--;
-     }
-
-    console.log(index)
+     }    
   }
 }
 
