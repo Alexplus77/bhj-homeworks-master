@@ -27,8 +27,7 @@ function setNext() {
 
 function setPrev() {
   index--;
-  index + 1 <= 0 ? index = sliderItems.length - 1 : index;
-  
+  index + 1 <= 0 ? index = sliderItems.length - 1 : index;  
   show();
 }
 function setDot(event) {
