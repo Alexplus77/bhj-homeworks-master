@@ -16,8 +16,7 @@ function show() {
   console.log(index);
 }
 
-function setNext() {
-  
+function setNext() {  
   index++;
   if (index >= sliderItems.length) {
     index = 0;
@@ -25,8 +24,7 @@ function setNext() {
   show();
 }
 
-function setPrev() {
-  
+function setPrev() {  
   index--;
   if (index + 1 <= 0) {
     index = sliderItems.length - 1;
