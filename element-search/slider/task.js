@@ -1,10 +1,22 @@
 const sliderNext = document.querySelector(".slider__arrow_next");
 const sliderPrev = document.querySelector(".slider__arrow_prev");
-const sliderDot = document.querySelector(".slider__dots");
+let sliderDot = document.querySelector(".slider__dots");
 const [...sliderItems] = document.querySelectorAll(".slider__item");
-const [...sliderDots] = document.querySelectorAll(".slider__dot");
 
+let sliderDots = [];
 let index = 0;
+
+function renderDots() {
+  sliderItems.forEach((elem, i) => {
+    newDot = document.createElement("div");
+    newDot.className = "slider__dot ";
+    if (i === 0) {
+      newDot.classList.add("slider__dot_active");
+    }
+    sliderDots.push(sliderDot.appendChild(newDot));
+  });
+}
+renderDots();
 
 function show() {
   sliderItems.forEach((elem) => {
@@ -15,7 +27,6 @@ function show() {
   });
   sliderItems[index].classList.add("slider__item_active");
   sliderDots[index].classList.add("slider__dot_active");
-  console.log(index);
 }
 
 function setNext() {
@@ -28,9 +39,10 @@ function setNext() {
 
 function setPrev() {
   index--;
-  index + 1 <= 0 ? index = sliderItems.length - 1 : index;  
+  index + 1 <= 0 ? (index = sliderItems.length - 1) : index;
   show();
 }
+
 function setDot(event) {
   index = sliderDots.findIndex((elem) => event.target === elem);
   show();
@@ -38,4 +50,4 @@ function setDot(event) {
 
 sliderNext.addEventListener("click", setNext);
 sliderPrev.addEventListener("click", setPrev);
-sliderDot.addEventListener("click", setDot);
+sliderDots.forEach((elem) => elem.addEventListener("click", setDot));
