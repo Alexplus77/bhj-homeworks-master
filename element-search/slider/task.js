@@ -1,6 +1,6 @@
 const sliderNext = document.querySelector(".slider__arrow_next");
 const sliderPrev = document.querySelector(".slider__arrow_prev");
-let sliderDot = document.querySelector(".slider__dots");
+const sliderDot = document.querySelector(".slider__dots");
 const [...sliderItems] = document.querySelectorAll(".slider__item");
 
 let sliderDots = [];
