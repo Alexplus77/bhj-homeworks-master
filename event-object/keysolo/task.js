@@ -95,7 +95,7 @@ const game = new Game(document.getElementById('game'))
 document.addEventListener("keyup", game.registerEvents);
 
 function test(event) {
-  console.log(event.key)
+  console.log(event.key)// Здесь выводит
 }
 
 document.addEventListener("keyup", test);
