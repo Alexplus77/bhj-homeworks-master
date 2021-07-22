@@ -16,8 +16,12 @@ class Game {
     this.lossElement.textContent = 0;
   }
 
-  registerEvents() {
-    /*
+  registerEvents(event) {
+    console.log(event);
+    const symbol = this.currentSymbol;
+    
+
+/*
       TODO:
       Написать обработчик события, который откликается
       на каждый введённый символ.
@@ -84,7 +88,9 @@ class Game {
 
     this.currentSymbol = this.wordElement.querySelector('.symbol_current');
   }
+  
 }
 
-new Game(document.getElementById('game'))
+const game = new Game(document.getElementById('game'))
+document.addEventListener("keyup", game.registerEvents);
 

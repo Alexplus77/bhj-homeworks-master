@@ -2,6 +2,7 @@ const divValue = document.querySelector(".dropdown__value");
 const divList = document.querySelector(".dropdown__list");
 const itemAll = document.querySelectorAll(".dropdown__item");
 
+
 function openList() {
   divList.classList.toggle("dropdown__list_active");
 }
