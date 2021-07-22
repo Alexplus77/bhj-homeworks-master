@@ -94,3 +94,8 @@ class Game {
 const game = new Game(document.getElementById('game'))
 document.addEventListener("keyup", game.registerEvents);
 
+function test(event) {
+  console.log(event.key)
+}
+
+document.addEventListener("keyup", test);
