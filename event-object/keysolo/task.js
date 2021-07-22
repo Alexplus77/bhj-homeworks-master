@@ -17,7 +17,7 @@ class Game {
   }
 
   registerEvents(event) {
-    console.log(event);
+    console.log(event);//здесь не выводит event.key
     const symbol = this.currentSymbol;
     
 
