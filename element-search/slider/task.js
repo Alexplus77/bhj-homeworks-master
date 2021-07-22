@@ -6,17 +6,14 @@ const [...sliderItems] = document.querySelectorAll(".slider__item");
 let sliderDots = [];
 let index = 0;
 
-function renderDots() {
-  sliderItems.forEach((elem, i) => {
-    newDot = document.createElement("div");
+(function renderDots() {
+  sliderItems.forEach((elem) => {
+    const newDot = document.createElement("div");
     newDot.className = "slider__dot ";
-    if (i === 0) {
-      newDot.classList.add("slider__dot_active");
-    }
     sliderDots.push(sliderDot.appendChild(newDot));
+    sliderDots[index].classList.add("slider__dot_active");
   });
-}
-renderDots();
+})();
 
 function show() {
   sliderItems.forEach((elem, i) => {
