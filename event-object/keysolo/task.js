@@ -17,7 +17,7 @@ class Game {
   }
 
   registerEvents(event) {
-    console.log(event);//здесь не выводит event.key
+    console.log(event);//!здесь не выводит event.key
     const symbol = this.currentSymbol;
     
 
@@ -95,7 +95,7 @@ const game = new Game(document.getElementById('game'))
 document.addEventListener("keyup", game.registerEvents);
 
 function test(event) {
-  console.log(event.key)// Здесь выводит
+  console.log(event.key)// !Здесь выводит
 }
 
 document.addEventListener("keyup", test);
