@@ -19,8 +19,8 @@ class Game {
   registerEvents() {
     
     document.addEventListener('keyup', (e) => {
-      this.currentSymbol
-      if ((e.key === this.currentSymbol.textContent)) {
+      
+      if ((e.key.toLocaleLowerCase() === this.currentSymbol.textContent.toLocaleLowerCase())) {
         this.success()
          this.currentSymbol.nextElementSibling
         console.log(this.currentSymbol)
