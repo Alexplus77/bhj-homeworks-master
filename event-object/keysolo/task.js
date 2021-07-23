@@ -16,9 +16,19 @@ class Game {
     this.lossElement.textContent = 0;
   }
 
-  registerEvents(event) {
-    console.log(event);//!здесь не выводит event.key
-    const symbol = this.currentSymbol;
+  registerEvents() {
+    
+    document.addEventListener('keyup', (e) => {
+      this.currentSymbol
+      if ((e.key === this.currentSymbol.textContent)) {
+        this.success()
+         this.currentSymbol.nextElementSibling
+        console.log(this.currentSymbol)
+      } else { this.fail() }
+      
+    })
+    
+    
     
 
 /*
@@ -91,11 +101,4 @@ class Game {
   
 }
 
-const game = new Game(document.getElementById('game'))
-document.addEventListener("keyup", game.registerEvents);
-
-function test(event) {
-  console.log(event.key)// !Здесь выводит
-}
-
-document.addEventListener("keyup", test);
+ new Game(document.getElementById('game'))
