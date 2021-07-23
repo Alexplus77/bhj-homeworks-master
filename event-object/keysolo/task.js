@@ -18,16 +18,10 @@ class Game {
 
   registerEvents() {
     document.addEventListener("keyup", (e) => {
-      if (
-        e.key.toLocaleLowerCase() ===
-        this.currentSymbol.textContent.toLocaleLowerCase()
-      ) {
-        this.success();
-        this.currentSymbol.nextElementSibling;
-        console.log(this.currentSymbol);
-      } else {
-        this.fail();
-      }
+      e.key.toLocaleLowerCase() ===
+      this.currentSymbol.textContent.toLocaleLowerCase()
+        ? this.success()
+        : this.fail();
     });
 
     /*
