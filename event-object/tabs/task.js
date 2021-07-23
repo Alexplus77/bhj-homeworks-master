@@ -5,7 +5,7 @@ const navMenu = document.querySelector(".tab__navigation");
 let index = 0;
 
 function openMenuContent(e) {
-  closeMenuContent();
+  hideMenuContent();
 
   e.target.classList.add("tab_active");
 
@@ -13,7 +13,7 @@ function openMenuContent(e) {
   contentAll[index].classList.add("tab__content_active");
 }
 
-function closeMenuContent() {
+function hideMenuContent() {
   menuAll.forEach((elem) => {
     elem.classList.remove("tab_active");
     contentAll[index].classList.remove("tab__content_active");
