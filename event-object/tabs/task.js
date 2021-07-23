@@ -1,16 +1,17 @@
 const menuAll = [...document.querySelectorAll(".tab")];
 const contentAll = [...document.querySelectorAll(".tab__content")];
-let index = 0;
 
-function setActiveTab(e) {  
-  closePrevTab();
+
+function setActiveTab(e) {
+    
+  closePrevTab(index);
   e.target.classList.add("tab_active");
 
   index = menuAll.findIndex((elem) => elem.classList.contains("tab_active"));
   contentAll[index].classList.add("tab__content_active");
 }
 
-function closePrevTab() {
+function closePrevTab(index) {
 
   menuAll.forEach((elem) => {
     elem.classList.remove("tab_active");
