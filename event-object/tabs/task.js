@@ -1,11 +1,9 @@
-const [...menuAll] = document.querySelectorAll(".tab");
-const [...contentAll] = document.querySelectorAll(".tab__content");
-const navMenu = document.querySelector(".tab__navigation");
+const menuAll = [...document.querySelectorAll(".tab")];
+const contentAll = [...document.querySelectorAll(".tab__content")];
 
-let index = 0;
-
-function openMenuContent(e) {
-  hideMenuContent();
+function setActiveTab(e) {
+  let index = 0;
+  closePrevTab(index);
 
   e.target.classList.add("tab_active");
 
@@ -13,11 +11,10 @@ function openMenuContent(e) {
   contentAll[index].classList.add("tab__content_active");
 }
 
-function hideMenuContent() {
+function closePrevTab(index) {
   menuAll.forEach((elem) => {
     elem.classList.remove("tab_active");
     contentAll[index].classList.remove("tab__content_active");
   });
 }
-
-navMenu.addEventListener("click", openMenuContent);
+menuAll.forEach((tab) => tab.addEventListener("click", setActiveTab));
