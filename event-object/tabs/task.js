@@ -7,7 +7,7 @@ function setActiveTab(e) {
   closePrevTab(index);
   e.target.classList.add("tab_active");
 
-  index = menuAll.findIndex((elem) => elem.classList.contains("tab_active"));
+ const index = menuAll.findIndex((elem) => elem.classList.contains("tab_active"));
   contentAll[index].classList.add("tab__content_active");
 }
 
