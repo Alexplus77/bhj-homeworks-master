@@ -1,21 +1,18 @@
-const textForRotator = [...document.querySelectorAll(".rotator__case")];
-const sliderText = document.querySelectorAll(".rotator");
+const caseRotator = [...document.querySelectorAll(".rotator__case")];
 
 function rotator() {
-  let index = textForRotator.findIndex((elem) =>
+  let index = caseRotator.findIndex((elem) =>
     elem.classList.contains("rotator__case_active")
   );
   removeRotator();
   index++;
-  if (index === textForRotator.length) {
+  if (index === caseRotator.length) {
     index = 0;
   }
-  textForRotator[index].classList.add("rotator__case_active");
+  caseRotator[index].classList.add("rotator__case_active");
 }
 
 function removeRotator() {
-  textForRotator.forEach((elem) =>
-    elem.classList.remove("rotator__case_active")
-  );
+  caseRotator.forEach((elem) => elem.classList.remove("rotator__case_active"));
 }
 setInterval(rotator, 1000);
