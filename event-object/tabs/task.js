@@ -5,8 +5,8 @@ function setActiveTab(e) {
   closePrevTab();
   let index = menuAll.indexOf(e.target);
   e.target.classList.add("tab_active");
-    contentAll[index].classList.add("tab__content_active");
-    
+  contentAll[index].classList.add("tab__content_active");
+  contentAll()[index].classList.add("tab__content_active");
 }
 
 function closePrevTab() {
