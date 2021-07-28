@@ -3,16 +3,15 @@ function rotator(rotatorItem) {
 
   let index = 0;
   return () => {
-   rotatorSlides[index].classList.remove("rotator__case_active");
-    
-    if (index ++=== rotatorSlides.length) {
+    rotatorSlides[index].classList.remove("rotator__case_active");
+    index++;
+    if (index === rotatorSlides.length) {
       index = 0;
     }
     rotatorSlides[index].classList.add("rotator__case_active");
     rotatorSlides[index].style.color = rotatorSlides[index].dataset["color"];
   };
 }
-
 
 let case1 = rotator(".rotator1");
 setInterval(case1, 1000);
@@ -26,3 +25,20 @@ let case5 = rotator(".rotator5");
 setInterval(case5, 5000);
 let case6 = rotator(".rotator6");
 setInterval(case6, 6000);
+
+
+
+function sayHallo() {
+  let count=0
+  return () => {
+    count++
+    if (count <= 3) {
+     return 'Hallo Alex'
+   } 
+  }  
+}
+let f = sayHallo()
+console.log(f())
+console.log(f());
+console.log(f());
+console.log(f());
