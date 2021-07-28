@@ -26,23 +26,21 @@ setInterval(case5, 5000);
 let case6 = rotator(".rotator6");
 setInterval(case6, 6000);
 
-
-
 function sayHallo(limit) {
-  let count=0
+  let count = 0;
   return () => {
-    count++
+    count++;
     if (count <= limit) {
-     return 'Hallo Alex'
-   } 
-  }  
+      return "Hallo Alex";
+    }
+  };
 }
-let f = sayHallo(2)
-console.log(f())
+let f = sayHallo(2);
 console.log(f());
 console.log(f());
 console.log(f());
-console.log('====================================================')
+console.log(f());
+console.log("====================================================");
 let f2 = sayHallo(3);
 console.log(f2());
 console.log(f2());
