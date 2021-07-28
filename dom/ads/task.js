@@ -42,3 +42,9 @@ console.log(f())
 console.log(f());
 console.log(f());
 console.log(f());
+console.log('====================================================')
+let f2 = sayHallo(3);
+console.log(f2());
+console.log(f2());
+console.log(f2());
+console.log(f2());
