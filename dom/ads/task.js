@@ -5,8 +5,10 @@ function removeCase() {
 }
 
 function setCount(elem) {
+  
   return () => {
-    elem.classList.add("rotator__case_active");
+    elem.style.color=elem.dataset['color']
+    elem.classList.add("rotator__case_active");     
   };
 }
 
@@ -14,6 +16,8 @@ caseRotator.forEach((elem) => {
   let count = setCount(elem);
   let time = elem.dataset["speed"];
 
-  console.log(elem);
+  console.log(elem, time);
   setInterval(count, time);
+ 
 });
+removeCase()
