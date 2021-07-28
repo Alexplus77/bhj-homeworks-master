@@ -24,6 +24,7 @@ function rotator(arr) {
 function removeCase(arr) {
   arr.forEach((elem) => elem.classList.remove("rotator__case_active"));
 }
+
 let case1 = rotator(caseRotator1);
 setInterval(case1, 1000);
 let case2 = rotator(caseRotator2);
