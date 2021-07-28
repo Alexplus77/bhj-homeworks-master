@@ -28,16 +28,16 @@ setInterval(case6, 6000);
 
 
 
-function sayHallo() {
+function sayHallo(limit) {
   let count=0
   return () => {
     count++
-    if (count <= 3) {
+    if (count <= limit) {
      return 'Hallo Alex'
    } 
   }  
 }
-let f = sayHallo()
+let f = sayHallo(2)
 console.log(f())
 console.log(f());
 console.log(f());
