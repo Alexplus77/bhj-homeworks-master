@@ -3,9 +3,9 @@ function rotator(rotatorItem) {
 
   let index = 0;
   return () => {
-    removeCase(rotatorSlides, index);
-    index++;
-    if (index === rotatorSlides.length) {
+   rotatorSlides[index].classList.remove("rotator__case_active");
+    
+    if (index ++=== rotatorSlides.length) {
       index = 0;
     }
     rotatorSlides[index].classList.add("rotator__case_active");
@@ -13,9 +13,6 @@ function rotator(rotatorItem) {
   };
 }
 
-function removeCase(rotatorSlides, index) {
-  rotatorSlides[index].classList.remove("rotator__case_active");
-}
 
 let case1 = rotator(".rotator1");
 setInterval(case1, 1000);
