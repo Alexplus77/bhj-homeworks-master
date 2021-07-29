@@ -9,8 +9,7 @@ const setChange = (selector, activate, changeItem) => {
     e.preventDefault();
     reset(activate, menuItem);
       e.target.classList.add(activate);
-      console.log(changeItem);
-    changeElem(changeItem,e)
+         changeElem(changeItem,e)
   };
 };
 
@@ -38,31 +37,3 @@ backgColor.forEach((elem) => elem.addEventListener("click", bgColor));
 
 
 
-// let text = changeTextColor(".book__control_color", "color_active", "color");
-// let bgColor = changeBgColor(
-//   ".book__control_background",
-//   "color_active",
-//   "backgroundColor"
-// );
-
-
-
-// const changeTextColor = (selector, activate) => {
-//   const menuItem = [...document.querySelector(selector).children];
-//   return (e) => {
-//     e.preventDefault();
-//     reset(activate, menuItem);
-//     e.target.classList.add(activate);
-//     textContent.style.color = e.target.dataset["textColor"];
-//   };
-// };
-
-// const changeBgColor = (selector, activate) => {
-//   const menuItem = [...document.querySelector(selector).children];
-//   return (e) => {
-//     e.preventDefault();
-//     reset(activate, menuItem);
-//     e.target.classList.add(activate);
-//     textContent.closest(".book").style.backgroundColor = e.target.dataset["bgColor"];
-//   };
-// };
