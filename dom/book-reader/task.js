@@ -6,21 +6,17 @@ const setChange = (selector, activate, changeItem) => {
     e.preventDefault();
     reset(activate, menuItem);
     e.target.classList.add(activate);
-    changeElem(changeItem, e);
+    changeElemStyle(changeItem, e);
   };
 };
 
-const changeElem = (changeItem, e) => {
-  if (changeItem === "fontSize") {
-    textContent.style.fontSize = getComputedStyle(e.target).fontSize;
-  }
-  if (changeItem === "color") {
-    textContent.style.color = e.target.dataset["textColor"];
-  }
-  if (changeItem === "backgroundColor") {
-    textContent.closest(".book").style.backgroundColor =
-      e.target.dataset["bgColor"];
-  }
+const changeElemStyle = (changeItem, e) => {
+  const objElemStyle = {
+    fontSize: (textContent.style.fontSize = getComputedStyle(e.target).fontSize),
+    color: (textContent.style.color = e.target.dataset["textColor"]),
+    backgroundColor: (textContent.closest(".book").style.backgroundColor = e.target.dataset["bgColor"]),
+  };
+  return objElemStyle[changeItem];
 };
 
 const reset = (active, menuItem) => {
@@ -45,9 +41,11 @@ let bgColor = setChange(
 [...document.querySelector(".book__control_font-size").children].forEach(
   (elem) => elem.addEventListener("click", fontSize)
 );
-[...document.querySelector(".book__control_color").children].forEach((elem) =>
-  elem.addEventListener("click", textColor)
-);
-[...document.querySelector(".book__control_background").children].forEach(
-  (elem) => elem.addEventListener("click", bgColor)
-);
+[
+  ...document.querySelector(".book__control_color").querySelectorAll(".color"),
+].forEach((elem) => elem.addEventListener("click", textColor));
+[
+  ...document
+    .querySelector(".book__control_background")
+    .querySelectorAll(".color"),
+].forEach((elem) => elem.addEventListener("click", bgColor));
