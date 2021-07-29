@@ -22,6 +22,7 @@ const changeElem = (changeItem, e) => {
       e.target.dataset["bgColor"];
   }
 };
+
 const reset = (active, menuItem) => {
   menuItem.forEach((elem) => {
     elem.classList.remove(active);
@@ -34,6 +35,7 @@ let fontSize = setChange(
   "fontSize"
 );
 let textColor = setChange(".book__control_color", "color_active", "color");
+
 let bgColor = setChange(
   ".book__control_background",
   "color_active",
