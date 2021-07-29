@@ -12,9 +12,12 @@ const setChange = (selector, activate, changeItem) => {
 
 const changeElemStyle = (changeItem, e) => {
   const objElemStyle = {
-    fontSize: (textContent.style.fontSize = getComputedStyle(e.target).fontSize),
+    fontSize: (textContent.style.fontSize = getComputedStyle(
+      e.target
+    ).fontSize),
     color: (textContent.style.color = e.target.dataset["textColor"]),
-    backgroundColor: (textContent.closest(".book").style.backgroundColor = e.target.dataset["bgColor"]),
+    backgroundColor: (textContent.closest(".book").style.backgroundColor =
+      e.target.dataset["bgColor"]),
   };
   return objElemStyle[changeItem];
 };
@@ -41,11 +44,9 @@ let bgColor = setChange(
 [...document.querySelector(".book__control_font-size").children].forEach(
   (elem) => elem.addEventListener("click", fontSize)
 );
-[
-  ...document.querySelector(".book__control_color").querySelectorAll(".color"),
-].forEach((elem) => elem.addEventListener("click", textColor));
-[
-  ...document
-    .querySelector(".book__control_background")
-    .querySelectorAll(".color"),
-].forEach((elem) => elem.addEventListener("click", bgColor));
+[...document.querySelectorAll(".color")].forEach((elem) =>
+  elem.addEventListener("click", textColor)
+);
+[...document.querySelectorAll(".color")].forEach((elem) =>
+  elem.addEventListener("click", bgColor)
+);
