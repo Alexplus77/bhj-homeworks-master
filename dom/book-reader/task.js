@@ -11,6 +11,7 @@ const setChange = (selector, activate, changeItem) => {
 };
 
 const changeElemStyle = (changeItem, e) => {
+    
   switch (changeItem) {
     case "fontSize":
       textContent.style.fontSize = getComputedStyle(e.target).fontSize;
