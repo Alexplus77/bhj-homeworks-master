@@ -1,27 +1,29 @@
 const textContent = document.querySelector(".book__content");
 
 const setChange = (selector, activate, changeItem) => {
-  const menuItem = [...document.querySelector(selector).children];
+    const menuItem = [...document.querySelectorAll(selector)];
+    
   return (e) => {
     e.preventDefault();
     reset(activate, menuItem);
     e.target.classList.add(activate);
-    changeElemStyle(changeItem, e);
+      changeElemStyle(changeItem, e);
+      
   };
 };
 
 const changeElemStyle = (changeItem, e) => {
-  const objElemStyle = {
-    fontSize: (textContent.style.fontSize = getComputedStyle(
-      e.target
-    ).fontSize),
-    color: (textContent.style.color = e.target.dataset["textColor"]),
-    backgroundColor: (textContent.closest(".book").style.backgroundColor =
-      e.target.dataset["bgColor"]),
-  };
-  return objElemStyle[changeItem];
-};
-
+    if (changeItem === "fontSize") {
+        textContent.style.fontSize = getComputedStyle(e.target).fontSize;
+    }
+    if (changeItem === "color") {
+        textContent.style.color = e.target.dataset["textColor"];
+    }
+    if (changeItem === "backgroundColor") {
+        textContent.closest(".book").style.backgroundColor =
+            e.target.dataset["bgColor"];
+    }
+}
 const reset = (active, menuItem) => {
   menuItem.forEach((elem) => {
     elem.classList.remove(active);
@@ -29,20 +31,20 @@ const reset = (active, menuItem) => {
 };
 
 let fontSize = setChange(
-  ".book__control_font-size",
+  ".font-size",
   "font-size_active",
   "fontSize"
 );
-let textColor = setChange(".book__control_color", "color_active", "color");
+let textColor = setChange(".color", "color_active", "color");
 
 let bgColor = setChange(
-  ".book__control_background",
+  ".color",
   "color_active",
   "backgroundColor"
 );
 
-[...document.querySelector(".book__control_font-size").children].forEach(
-  (elem) => elem.addEventListener("click", fontSize)
+[...document.querySelectorAll(".font-size")].forEach((elem) =>
+  elem.addEventListener("click", fontSize)
 );
 [...document.querySelectorAll(".color")].forEach((elem) =>
   elem.addEventListener("click", textColor)
@@ -50,3 +52,13 @@ let bgColor = setChange(
 [...document.querySelectorAll(".color")].forEach((elem) =>
   elem.addEventListener("click", bgColor)
 );
+
+
+
+// const objElemStyle = {
+//   fontSize: (textContent.style.fontSize = getComputedStyle(e.target).fontSize),
+//   color: (textContent.style.color = e.target.dataset["textColor"]),
+//   backgroundColor: (textContent.closest(".book").style.backgroundColor =
+//     e.target.dataset["bgColor"]),
+// };
+// return objElemStyle[changeItem];
