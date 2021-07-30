@@ -27,9 +27,9 @@ const changeElemStyle = (changeItem, e) => {
 };
 
 const reset = (active, menuItem) => {
-  menuItem.forEach((elem) => {
-    elem.classList.remove(active);
-  });
+  menuItem
+    .find((elem) => elem.classList.contains(active))
+    .classList.remove(active);
 };
 
 let fontSize = setChange(".font-size", "font-size_active", "fontSize");
