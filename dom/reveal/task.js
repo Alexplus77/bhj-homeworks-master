@@ -41,7 +41,7 @@ const disipherInput = () => {
     if (input[elem].includes(i)) {
       newArr.push(elem);
     }
-    console.log(input[elem]);
+    console.log(newArr);
     console.log(elem);
   });
 };
