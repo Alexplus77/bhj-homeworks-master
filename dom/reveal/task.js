@@ -33,21 +33,21 @@ const input = {
  Напиши функцию, которая расшифрует input и расставит
  буквы в нужном порядке
 */
-let newArr = [];
+let rightPlacement = [];
 
 const disipherInput = () => {
   for (const leter in input) {
-    let arrPos = input[leter];
+    let position = input[leter];
 
-    if (arrPos.length > 1) {
-      arrPos.map((elem) => {
-        newArr[elem] = leter;
+    if (position.length > 1) {
+      position.map((elem) => {
+        rightPlacement[elem] = leter;
       });
     } else {
-      newArr[arrPos] = leter;
+      rightPlacement[position] = leter;
     }
   }
-  return newArr.join("");
+  return rightPlacement.join("");
 };
 
 disipherInput(input); // 'Hello world!';
