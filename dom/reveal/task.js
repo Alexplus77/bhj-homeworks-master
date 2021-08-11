@@ -36,14 +36,19 @@ const input = {
 let newArr = [];
 
 const disipherInput = () => {
-  arr = Object.keys(input);
-  arr.forEach((elem, i) => {
-    if (input[elem].includes(i)) {
-      newArr.push(elem);
+  for (const leter in input) {
+    let arrPos = input[leter];
+
+    if (arrPos.length > 1) {
+      arrPos.map((elem) => {
+        newArr[elem] = leter;
+      });
+    } else {
+      newArr[arrPos] = leter;
     }
-    console.log(newArr);
-    console.log(elem);
-  });
+  }
+  return newArr.join("");
 };
 
 disipherInput(input); // 'Hello world!';
+console.log(disipherInput(input));
