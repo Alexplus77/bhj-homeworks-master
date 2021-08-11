@@ -50,5 +50,4 @@ const disipherInput = () => {
   return rightPlacement.join("");
 };
 
-disipherInput(input); // 'Hello world!';
-console.log(disipherInput(input));
+console.log(disipherInput(input));// 'Hello world!';
