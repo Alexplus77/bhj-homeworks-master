@@ -35,26 +35,10 @@ const input = {
 */
 const rightPlacement = [];
 
-const disipherInput = () => {
-  //! 1 вариант
-  // for (const letter in input) {
-  //   let position = input[letter];
-  //   position.forEach((elem) =>rightPlacement[elem] = letter);
-  // }
-  //    return rightPlacement.join("");
-
-
-  //! 2 вариант
-  // Object.entries(input).map(([letter, position]) => {
-  //   position.forEach((elem) =>rightPlacement[elem] = letter);
-  // })
-  // return rightPlacement.join("");
-
+const disipherInput = (input) => {
 //! 3 вариант
   Object.entries(input).reduce((acc, [letter, arr]) => {
-    arr.forEach(position => {
-      acc[position] = letter      
-    })    
+    arr.forEach(position => acc[position] = letter)    
     return acc
   }, []).join('')
  };
