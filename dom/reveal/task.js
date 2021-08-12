@@ -39,29 +39,24 @@ const disipherInput = () => {
   //! 1 вариант
   // for (const letter in input) {
   //   let position = input[letter];
-  //   position.forEach((elem) => {
-  //     rightPlacement[elem] = letter;
-  //   });
+  //   position.forEach((elem) =>rightPlacement[elem] = letter);
   // }
   //    return rightPlacement.join("");
 
 
   //! 2 вариант
   // Object.entries(input).map(([letter, position]) => {
-  //   position.forEach((elem) => {
-  //     rightPlacement[elem] = letter;
-  //   });
+  //   position.forEach((elem) =>rightPlacement[elem] = letter);
   // })
-  //return rightPlacement.join("");
+  // return rightPlacement.join("");
 
 //! 3 вариант
   Object.entries(input).reduce((acc, [letter, arr]) => {
     arr.forEach(position => {
-      acc[position] = letter
-      
-    })
+      acc[position] = letter      
+    })    
     return acc
   }, [].join(''))
-};
+ };
 
 console.log(disipherInput(input)); // 'Hello world!'
