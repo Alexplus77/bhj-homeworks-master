@@ -37,10 +37,11 @@ const rightPlacement = [];
 
 const disipherInput = (input) => {
 //! 3 вариант
-  Object.entries(input).reduce((acc, [letter, arr]) => {
+ return Object.entries(input).reduce((acc, [letter, arr]) => {
     arr.forEach(position => acc[position] = letter)    
     return acc
   }, []).join('')
  };
 
-console.log(disipherInput(input)); // 'Hello world!'
+
+console.log(disipherInput(input))// 'Hello world!'
