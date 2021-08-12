@@ -38,16 +38,11 @@ const rightPlacement = [];
 const disipherInput = () => {
   for (const letter in input) {
     let position = input[letter];
-
-    if (position.length > 1) {
-      position.map((elem) => {
-        rightPlacement[elem] = letter;
-      });
-    } else {
-      rightPlacement[position] = letter;
-    }
+    position.forEach((elem) => {
+      rightPlacement[elem] = letter;
+    });
   }
   return rightPlacement.join("");
 };
 
-console.log(disipherInput(input));// 'Hello world!';
+console.log(disipherInput(input)); // 'Hello world!'
