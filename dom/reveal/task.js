@@ -56,7 +56,7 @@ const disipherInput = () => {
       acc[position] = letter      
     })    
     return acc
-  }, [].join(''))
+  }, []).join('')
  };
 
 console.log(disipherInput(input)); // 'Hello world!'
