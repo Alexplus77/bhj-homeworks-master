@@ -2,11 +2,18 @@ const revealElem = [...document.querySelectorAll(".reveal")];
 
 const openElem = () => {
   const vewport = window.innerHeight;
-
+console.log(vewport)
   revealElem.forEach((elem) => {
-    if (elem.getBoundingClientRect().top < vewport) {
+    console.log(elem);
+    if (
+      elem.getBoundingClientRect().top < vewport - (vewport * 0.1) &&
+      elem.getBoundingClientRect().bottom > 0
+    ) {
       elem.classList.add("reveal_active");
-    } else if (elem.getBoundingClientRect().top > 0) {
+    } else if (
+      elem.getBoundingClientRect().top > 0 ||
+      elem.getBoundingClientRect().bottom < 0
+    ) {
       elem.classList.remove("reveal_active");
     }
   });
@@ -49,7 +56,8 @@ const disipherInput = () => {
   // })
   // return rightPlacement.join("");
 
-  //! 3 вариант
+  //! 3 вариант   
+  
   return Object.entries(input)
     .reduce((acc, [letter, arr]) => {
       arr.forEach((position) => (acc[position] = letter));
