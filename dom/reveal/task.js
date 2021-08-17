@@ -2,11 +2,11 @@ const revealElem = [...document.querySelectorAll(".reveal")];
 
 const openElem = () => {
   const vewport = window.innerHeight;
-console.log(vewport)
+
   revealElem.forEach((elem) => {
     console.log(elem);
     if (
-      elem.getBoundingClientRect().top < vewport - (vewport * 0.1) &&
+      elem.getBoundingClientRect().top < vewport - (vewport * 0.3) &&
       elem.getBoundingClientRect().bottom > 0
     ) {
       elem.classList.add("reveal_active");
