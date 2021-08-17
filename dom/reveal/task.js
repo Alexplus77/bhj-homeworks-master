@@ -10,10 +10,7 @@ const openElem = () => {
       elem.getBoundingClientRect().bottom > 0
     ) {
       elem.classList.add("reveal_active");
-    } else if (
-      elem.getBoundingClientRect().top > 0 ||
-      elem.getBoundingClientRect().bottom < 0
-    ) {
+    } else  {
       elem.classList.remove("reveal_active");
     }
   });
