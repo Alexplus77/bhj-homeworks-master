@@ -84,7 +84,6 @@ class Autocomplete {
     */
 
     return [...this.input.options].reduce((acc, elem) => {
-      console.log(elem);
       if (elem.text.toLowerCase().includes(text.toLowerCase())) {
         acc.push({ text: elem.text, value: elem.value });
       }
