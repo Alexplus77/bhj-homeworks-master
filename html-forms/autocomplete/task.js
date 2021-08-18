@@ -82,14 +82,12 @@ class Autocomplete {
         value: 'Содержимое атрибута value'
       }
     */
-    
 
     return [...this.input.options].reduce((acc, elem) => {
       console.log(elem);
-       if (elem.text.toLowerCase().includes(text.toLowerCase())) {
-         acc.push({ text: elem.text, value: elem.value });
-       }
-     
+      if (elem.text.toLowerCase().includes(text.toLowerCase())) {
+        acc.push({ text: elem.text, value: elem.value });
+      }
       return acc;
     }, []);
   }
