@@ -81,12 +81,21 @@ class Autocomplete {
         value: 'Содержимое атрибута value'
       }
     */
-    return [
-      {
-        text: 'Чубакка',
-        value: '1'
-      }
-    ];
+    
+ return  [...this.input.options].reduce((acc, elem) => {
+     console.log(text.split(''))
+     if (elem.text.split('').includes(text.split(''))) {
+     acc.push({text:elem.text, value: value})
+     }
+     return acc
+   },[])
+       
+    // return [
+    //   {
+    //     text: 'Чубакка',
+    //     value: '1'
+    //   }
+    // ];
   }
 }
 
