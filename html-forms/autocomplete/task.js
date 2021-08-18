@@ -83,8 +83,8 @@ class Autocomplete {
       }
     */
 
-    return [...this.input.options].reduce((acc, elem, i) => {
-      if (elem.text.split("").includes(text.split("")[i])) {
+    return [...this.input.options].reduce((acc, elem) => {
+      if (elem.text.split("").includes(text.split(""))) {
         acc.push({ text: elem.text, value: elem.value });
       }
       return acc;
