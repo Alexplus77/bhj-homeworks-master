@@ -18,7 +18,7 @@ const messageClient = () => {
         </div>
       </div>`;
   inputClient.value = "";
-  robotAnswer("robotGreeting");
+  messageRobot("robotGreeting");
 };
 
 const messageRobot = (set) => {
