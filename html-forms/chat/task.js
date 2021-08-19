@@ -10,7 +10,7 @@ const realTime = () => {
 };
 
 const messageClient = () => {
-    messageRobot("robotGreeting");
+   messageRobot(inputClient.value);
   chatMessage.innerHTML += `
       <div class="message message_client">
         <div class="message__time">${realTime()}</div>
@@ -18,19 +18,35 @@ const messageClient = () => {
         ${inputClient.value}
         </div>
       </div>`;
+    
   inputClient.value = "";
-  messageRobot("robotAnswer");
+  
 };
 
-const messageRobot = (set) => {
+const messageRobot = (text, set) => {
   const robotWords = {
-      robotGreeting: ["Добрый день", "Здравствуйте", "Привет"],
+      robotGreeting: [ "Здравствуйте, вам нужен оператор? Да/Нет"],
       robotAnswer:['Все операторы заняты'],
     robotParting: ["До встречи", "Увидемся", "До свидания"],
     robotQuestion: ["Еще могу чем то помоч?"],
-  };
-  const index = Math.floor(Math.random() * robotWords[set].length);
+    };
+    
+    console.log(text)
+    console.log(text.includes("да"));
+   
+   switch (text) {
+     case text.includes("да"):
+       set = "robotAnswer";
+       break;
+     case text.includes("нет"):
+       set = "robotParting";
+       break;
 
+     default:
+       set = "robotGreeting";
+       break;
+   } 
+ const index = Math.floor(Math.random() * robotWords[set].length);
   chatMessage.innerHTML += `
       <div class="message">
         <div class="message__time">${realTime()}</div>
