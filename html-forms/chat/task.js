@@ -10,6 +10,7 @@ const realTime = () => {
 };
 
 const messageClient = () => {
+    messageRobot("robotGreeting");
   chatMessage.innerHTML += `
       <div class="message message_client">
         <div class="message__time">${realTime()}</div>
@@ -18,12 +19,13 @@ const messageClient = () => {
         </div>
       </div>`;
   inputClient.value = "";
-  messageRobot("robotGreeting");
+  messageRobot("robotAnswer");
 };
 
 const messageRobot = (set) => {
   const robotWords = {
-    robotGreeting: ["Добрый день", "Здравствуйте", "Привет"],
+      robotGreeting: ["Добрый день", "Здравствуйте", "Привет"],
+      robotAnswer:['Все операторы заняты'],
     robotParting: ["До встречи", "Увидемся", "До свидания"],
     robotQuestion: ["Еще могу чем то помоч?"],
   };
