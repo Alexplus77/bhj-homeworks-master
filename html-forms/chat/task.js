@@ -21,7 +21,7 @@ const messageClient = () => {
   robotAnswer("robotGreeting");
 };
 
-const robotAnswer = (set) => {
+const messageRobot = (set) => {
   const robotWords = {
     robotGreeting: ["Добрый день", "Здравствуйте", "Привет"],
     robotParting: ["До встречи", "Увидемся", "До свидания"],
