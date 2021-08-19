@@ -10,7 +10,7 @@ const realTime = () => {
 };
 
 const messageClient = () => {
-   messageRobot(inputClient.value);
+   
   chatMessage.innerHTML += `
       <div class="message message_client">
         <div class="message__time">${realTime()}</div>
@@ -18,7 +18,7 @@ const messageClient = () => {
         ${inputClient.value}
         </div>
       </div>`;
-    
+    messageRobot(inputClient.value);
   inputClient.value = "";
   
 };
