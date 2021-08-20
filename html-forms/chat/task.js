@@ -34,11 +34,11 @@ const messageRobot = (text, set) => {
     console.log(text)
     console.log(text.toLowerCase().includes("да"));
    
-   switch (text) {
-     case text.toLowerCase().includes("да"):
+   switch (text.toLowerCase()) {
+     case "да":
        set = "robotAnswer";
        break;
-     case text.toLowerCase().includes("нет"):
+     case 'нет':
        set = "robotParting";
        break;
 
