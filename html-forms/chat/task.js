@@ -2,59 +2,40 @@ const widjet = document.querySelector(".chat-widget");
 const inputClient = document.querySelector(".chat-widget__input");
 const chatMessage = document.querySelector(".chat-widget__messages");
 
-const widjetOpen = () => {
-  widjet.classList.add("chat-widget_active");
-};
-const realTime = () => {
-  return new Date().toLocaleTimeString().slice(0, -3);
-};
+const widjetOpen = () => {  widjet.classList.add("chat-widget_active")};
+const realTime = () => { return new Date().toLocaleTimeString().slice(0, -3)};
 
 const messageClient = () => {
-  let text2 = inputClient.value;
-  const markup = `
+  console.log(inputClient.value)
+  if(inputClient.value===''){inputClient.value='Привет'}
+  chatMessage.innerHTML += `
       <div class="message message_client">
         <div class="message__time">${realTime()}</div>
         <div class="message__text">
-        ${text2}
+        ${inputClient.value}
         </div>
       </div>`;
-  chatMessage.innerHTML += markup;
-
-  messageRobot(inputClient.value);
+  messageRobot();
   inputClient.value = "";
 };
 
-const messageRobot = (text) => {
-  const robotWords = {
-    robotGreeting: ["Здравствуйте, вам нужен оператор? Да/Нет"],
-    robotAnswer: [
-      "Все операторы заняты, заказ будет обработан автоматически. Еще будет заказ? Да/Нет ",
-    ],
-    robotParting: ["До встречи", "Увидемся", "До свидания"],
-    robotQuestion: ["Еще могу чем то помоч?"],
-  };
-
-  switch (text.toLowerCase()) {
-    case "да":
-      set = "robotAnswer";
-      break;
-    case "нет":
-      set = "robotParting";
-      break;
-
-    default:
-      set = "robotGreeting";
-      break;
-  }
-  const index = Math.floor(Math.random() * robotWords[set].length);
+const messageRobot = () => {
+  const robotWords = ['Здравствуйте', 'заказ обрабатывается', 'до свидания', 'как дела' ]  
+  const index = Math.floor(Math.random() * robotWords.length);
   chatMessage.innerHTML += `
       <div class="message">
         <div class="message__time">${realTime()}</div>
         <div class="message__text">
-         ${robotWords[set][index]}
+         ${robotWords[index]}
         </div>
       </div>`;
 };
 
 widjet.addEventListener("click", widjetOpen);
 inputClient.addEventListener("change", messageClient);
+
+// document.addEventListener('click', (e) => {
+//     if(e.target != widjet ){
+//     { widjet.classList.remove("chat-widget_active") }};
+  
+// })
