@@ -10,43 +10,43 @@ const realTime = () => {
 };
 
 const messageClient = () => {
-   
-  chatMessage.innerHTML += `
+  let text2 = inputClient.value;
+  const markup = `
       <div class="message message_client">
         <div class="message__time">${realTime()}</div>
         <div class="message__text">
-        ${inputClient.value}
+        ${text2}
         </div>
       </div>`;
-    messageRobot(inputClient.value);
+  chatMessage.innerHTML += markup;
+
+  messageRobot(inputClient.value);
   inputClient.value = "";
-  
 };
 
-const messageRobot = (text, set) => {
+const messageRobot = (text) => {
   const robotWords = {
-      robotGreeting: [ "Здравствуйте, вам нужен оператор? Да/Нет"],
-      robotAnswer:['Все операторы заняты'],
+    robotGreeting: ["Здравствуйте, вам нужен оператор? Да/Нет"],
+    robotAnswer: [
+      "Все операторы заняты, заказ будет обработан автоматически. Еще будет заказ? Да/Нет ",
+    ],
     robotParting: ["До встречи", "Увидемся", "До свидания"],
     robotQuestion: ["Еще могу чем то помоч?"],
-    };
-    
-    console.log(text)
-    console.log(text.toLowerCase().includes("да"));
-   
-   switch (text.toLowerCase()) {
-     case "да":
-       set = "robotAnswer";
-       break;
-     case 'нет':
-       set = "robotParting";
-       break;
+  };
 
-     default:
-       set = "robotGreeting";
-       break;
-   } 
- const index = Math.floor(Math.random() * robotWords[set].length);
+  switch (text.toLowerCase()) {
+    case "да":
+      set = "robotAnswer";
+      break;
+    case "нет":
+      set = "robotParting";
+      break;
+
+    default:
+      set = "robotGreeting";
+      break;
+  }
+  const index = Math.floor(Math.random() * robotWords[set].length);
   chatMessage.innerHTML += `
       <div class="message">
         <div class="message__time">${realTime()}</div>
