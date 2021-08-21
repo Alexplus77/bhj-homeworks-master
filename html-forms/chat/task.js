@@ -2,8 +2,8 @@ const widjet = document.querySelector(".chat-widget");
 const inputClient = document.querySelector(".chat-widget__input");
 const chatMessage = document.querySelector(".chat-widget__messages");
 
-const widjetOpen = () => {widjet.classList.add("chat-widget_active")};
-const realTime = () => {return new Date().toLocaleTimeString().slice(0, -3)};
+const widjetOpen = () => widjet.classList.add("chat-widget_active");
+const realTime = () => new Date().toLocaleTimeString().slice(0, -3);
 
 const markupMessage = (text) => {
   chatMessage.innerHTML += `
@@ -12,16 +12,17 @@ const markupMessage = (text) => {
         <div class="message__text">
         ${text}
         </div>
-      </div>`;
+      </div>`;  
 };
 
 const messageClient = () => {
   markupMessage(inputClient.value);
   const message = document.querySelector(".message");
   message.classList.add("message_client");
-  message.scrollIntoView();
-  messageRobot();
+  message.scrollIntoView()
+  messageRobot();  
   inputClient.value = "";
+  
 };
 
 const messageRobot = () => {
