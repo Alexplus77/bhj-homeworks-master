@@ -36,9 +36,8 @@ const messageRobot = () => {
   markupMessage(robotWords[index]);
 };
 
-const waitingClient = () => {
-  setTimeout(messageRobot, 30000);
-};
+const waitingClient = () => setTimeout(messageRobot, 30000);
+
 
 widjet.addEventListener("click", widjetOpen);
 inputClient.addEventListener("change", messageClient);
