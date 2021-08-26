@@ -1,7 +1,7 @@
 const widjet = document.querySelector(".chat-widget");
 const inputClient = document.querySelector(".chat-widget__input");
 const chatMessage = document.querySelector(".chat-widget__messages");
-const icon = document.querySelector(".fas ")
+const icon = document.querySelector(".fa-eye-slash");
 
 const widjetOpen = () => widjet.classList.add("chat-widget_active");
 const widjetClose = (e) => {
@@ -38,7 +38,7 @@ const messageClient = () => {
   generateMarkup(inputClient.value);
   const message = document.querySelector(".message");
   message.classList.add("message_client");
-setTimeout(messageRobot, 3000)  
+setTimeout(messageRobot, 2000)  
   inputClient.value = "";
 };
 
