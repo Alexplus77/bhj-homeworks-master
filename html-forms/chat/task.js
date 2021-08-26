@@ -3,10 +3,11 @@ const inputClient = document.querySelector(".chat-widget__input");
 const chatMessage = document.querySelector(".chat-widget__messages");
 const icon = document.querySelector(".fa-eye-slash");
 
-const widjetOpen = () => widjet.classList.add("chat-widget_active");
-const widjetClose = (e) => {
-  console.log(e.target, widjet)
-  widjet.classList.remove("chat-widget_active")
+const widjetOpen = () =>  widjet.classList.add("chat-widget_active")
+
+const widjetClose = (e) => {  
+  console.log(e.target)
+  widjet.classList.remove("chat-widget_active");
 };
 const realTime = () => new Date().toLocaleTimeString().slice(0, -3);
 
@@ -20,8 +21,8 @@ const realTime = () => new Date().toLocaleTimeString().slice(0, -3);
 //       </div>`;
 // };
 const generateMarkup = (text, className = "message") => {
-  const messageContainer = document.createElement("div");
-  messageContainer.classList.add(className);
+  const messageContainer = document.createElement("div");  
+  messageContainer.classList.add(className);  
   const messageTime = document.createElement("div");
   messageTime.classList.add("message__time");
   messageTime.innerHTML = realTime();
@@ -31,7 +32,7 @@ const generateMarkup = (text, className = "message") => {
   messageContainer.appendChild(messageTime);
   messageContainer.appendChild(messageText);
   chatMessage.appendChild(messageContainer);
-  messageContainer.scrollIntoView(true);
+  messageContainer.scrollIntoView();
 };
 
 const messageClient = () => {
