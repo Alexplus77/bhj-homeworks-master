@@ -16,7 +16,7 @@ const realTime = () => new Date().toLocaleTimeString().slice(0, -3);
 // };
 const generateMarkup = (text, className = "message") => {
   const messageContainer = document.createElement("div");
-  messageContainer.classList.add(...className);
+  messageContainer.classList.add(className);
   const messageTime = document.createElement("div");
   messageTime.classList.add("message__time");
   messageTime.innerHTML = realTime();
@@ -33,8 +33,7 @@ const messageClient = () => {
   generateMarkup(inputClient.value);
   const message = document.querySelector(".message");
   message.classList.add("message_client");
-
-  messageRobot();
+setTimeout(messageRobot, 3000)  
   inputClient.value = "";
 };
 
@@ -46,7 +45,8 @@ const messageRobot = () => {
     "как дела",
   ];
   const index = Math.floor(Math.random() * robotWords.length);
-   generateMarkup(robotWords[index]);
+  
+  generateMarkup(robotWords[index]);
 };
 
 const waitingClient = () => setTimeout(messageRobot, 30000);
