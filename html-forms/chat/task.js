@@ -3,7 +3,10 @@ const inputClient = document.querySelector(".chat-widget__input");
 const chatMessage = document.querySelector(".chat-widget__messages");
 const icon = document.querySelector(".fa-eye-slash");
 
-const widjetOpen = () =>  widjet.classList.add("chat-widget_active")
+const widjetOpen = (e) => {
+  if (e.target.classList.contains("fa-eye-slash")){return}
+    widjet.classList.add("chat-widget_active");
+}
 
 const widjetClose = (e) => {  
   console.log(e.target)
