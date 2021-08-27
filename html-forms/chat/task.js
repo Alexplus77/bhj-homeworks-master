@@ -4,28 +4,21 @@ const chatMessage = document.querySelector(".chat-widget__messages");
 const icon = document.querySelector(".fa-eye-slash");
 
 const widjetOpen = (e) => {
-  if (e.target.classList.contains("fa-eye-slash")){return}
-    widjet.classList.add("chat-widget_active");
-}
-
-const widjetClose = (e) => {  
-  console.log(e.target)
-  widjet.classList.remove("chat-widget_active");
+  if (e.target.classList.contains("fa-eye-slash")) {
+    return;
+  }
+  widjet.classList.add("chat-widget_active");
 };
+
+const widjetClose = () => widjet.classList.remove("chat-widget_active");
+
 const realTime = () => new Date().toLocaleTimeString().slice(0, -3);
 
-// const markupMessage = (text) => {
-//   chatMessage.innerHTML += `
-//       <div class="message ">
-//         <div class="message__time">${realTime()}</div>
-//         <div class="message__text">
-//         ${text}
-//         </div>
-//       </div>`;
-// };
-const generateMarkup = (text, className = "message") => {
-  const messageContainer = document.createElement("div");  
-  messageContainer.classList.add(className);  
+const classesMessage = ["message", "message_client"];
+
+const generateMarkup = (text, classesMarkup) => {
+  const messageContainer = document.createElement("div");
+  messageContainer.classList.add(classesMarkup);
   const messageTime = document.createElement("div");
   messageTime.classList.add("message__time");
   messageTime.innerHTML = realTime();
@@ -39,10 +32,8 @@ const generateMarkup = (text, className = "message") => {
 };
 
 const messageClient = () => {
-  generateMarkup(inputClient.value);
-  const message = document.querySelector(".message");
-  message.classList.add("message_client");
-setTimeout(messageRobot, 2000)  
+  generateMarkup(inputClient.value, classesMessage[1]);
+  setTimeout(messageRobot, 2000);
   inputClient.value = "";
 };
 
@@ -54,8 +45,7 @@ const messageRobot = () => {
     "как дела",
   ];
   const index = Math.floor(Math.random() * robotWords.length);
-  
-  generateMarkup(robotWords[index]);
+  generateMarkup(robotWords[index], classesMessage[0]);
 };
 
 const waitingClient = () => setTimeout(messageRobot, 30000);
@@ -64,4 +54,3 @@ widjet.addEventListener("click", widjetOpen);
 inputClient.addEventListener("change", messageClient);
 inputClient.addEventListener("blur", waitingClient);
 icon.addEventListener("click", widjetClose);
-
