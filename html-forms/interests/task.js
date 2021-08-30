@@ -39,16 +39,9 @@ interestsItem.forEach((el) => {
 //! Разминка
 
 const makeCamelCase = (str) => {
-  const arrStr = str.split("-");
-  let firstLeter = "";
-  const camelCaseStr = arrStr.map((elem, i) => {
-      const arrLetter = elem.split("");
-      i === 0 ? (firstLeter = elem.split("")[0].toLowerCase()): (firstLeter = elem.split("")[0].toUpperCase());
-      arrLetter.splice(0, 1, firstLeter);
-      return arrLetter.join("");
-  }).join("");
+ return  str.split("-").map((word, i) => i===0? word : word[0].toUpperCase() + word.slice(1)).join('')
   
-  return camelCaseStr;
+  
   
 };
 console.log(makeCamelCase("background-color"));
