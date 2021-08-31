@@ -25,6 +25,7 @@ const productAdd = (e) => {
                 <img class="cart__product-image" src="${product.children[1].src}">
                 <div class="cart__product-count">${count}</div>
             </div>`;
+          count=1
       console.log(arrProdactId);
     }
   });
