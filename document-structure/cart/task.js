@@ -20,13 +20,7 @@ const changeQuantity = (e) => {
 const arrProdactId = [];
 
 const productAdd = (e) => {
-  productAddBtn.forEach((buttom) =>
-    buttom.insertAdjacentHTML(
-      "afterEnd",
-      "<div class ='product__remove'>Удалить из корзины</div>"
-    )
-  );
-
+ 
   products.forEach((product) => {
     if (product.querySelector(".product__add") === e.target) {
       const cartProductAll = [
@@ -46,12 +40,33 @@ const productAdd = (e) => {
                 <div class="cart__product-count">${count}</div>
             </div>`;
       }
-
       count = 1;
     }
   });
 };
+const productRemove = () => {
+     products.forEach((product) => {
+       if (product.querySelector(".product__add") === e.target) {
+         const cartProductAll = [
+           ...cartProduct.querySelectorAll(".cart__product"),
+         ];
+
+         if (arrProdactId.includes(product.dataset.id)) {
+           cartProductAll.forEach((elem) => {
+             if (elem.dataset.id === product.dataset.id) {
+               elem.children[1].innerHTML = +elem.children[1].innerHTML - count;
+             }
+           });
+         } 
+         count = 1;
+       }
+     });
+}
+    
+
+const productRemoveBtn = [...document.querySelectorAll(".product__remove")];
 quantityControl.forEach((elem) =>
   elem.addEventListener("click", changeQuantity)
 );
 productAddBtn.forEach((elem) => elem.addEventListener("click", productAdd));
+productRemoveBtn.forEach((elem) => elem.addEventListener("click", productRemove));
