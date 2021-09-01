@@ -4,6 +4,7 @@ const quantityControl = [
 ];
 const productAddBtn = [...document.querySelectorAll(".product__add")];
 const cartProduct = document.querySelector(".cart__products");
+const productRemoveBtn = [...document.querySelectorAll(".product__remove")];
 
 let count = 1;
 const changeQuantity = (e) => {
@@ -20,7 +21,6 @@ const changeQuantity = (e) => {
 const arrProdactId = [];
 
 const productAdd = (e) => {
- 
   products.forEach((product) => {
     if (product.querySelector(".product__add") === e.target) {
       const cartProductAll = [
@@ -29,7 +29,8 @@ const productAdd = (e) => {
 
       if (arrProdactId.includes(product.dataset.id)) {
         cartProductAll.forEach((elem) => {
-          if (elem.dataset.id === product.dataset.id) {
+            if (elem.dataset.id === product.dataset.id) {
+              
             elem.children[1].innerHTML = +elem.children[1].innerHTML + count;
           }
         });
@@ -44,29 +45,36 @@ const productAdd = (e) => {
     }
   });
 };
-const productRemove = () => {
-     products.forEach((product) => {
-       if (product.querySelector(".product__add") === e.target) {
-         const cartProductAll = [
-           ...cartProduct.querySelectorAll(".cart__product"),
-         ];
+const productRemove = (e) => {
+  products.forEach((product) => {
+    if (product.querySelector(".product__remove") === e.target) {
+      const cartProductAll = [
+        ...cartProduct.querySelectorAll(".cart__product"),
+      ];
+      if (arrProdactId.includes(product.dataset.id)) {
+        cartProductAll.forEach((elem) => {
+          if (elem.dataset.id === product.dataset.id) {
+              if (+elem.children[1].innerHTML === 1) {
+                  arrProdactId.splice(
+                    arrProdactId.indexOf(elem.dataset.id === product.dataset.id)
+                  );
+                cartProduct.removeChild(elem)
+              
+            } else {
+              elem.children[1].innerHTML = +elem.children[1].innerHTML - count;
+            }
+          }
+          count = 1;
+        });
+      }
+    }
+  });
+};
 
-         if (arrProdactId.includes(product.dataset.id)) {
-           cartProductAll.forEach((elem) => {
-             if (elem.dataset.id === product.dataset.id) {
-               elem.children[1].innerHTML = +elem.children[1].innerHTML - count;
-             }
-           });
-         } 
-         count = 1;
-       }
-     });
-}
-    
-
-const productRemoveBtn = [...document.querySelectorAll(".product__remove")];
 quantityControl.forEach((elem) =>
   elem.addEventListener("click", changeQuantity)
 );
 productAddBtn.forEach((elem) => elem.addEventListener("click", productAdd));
-productRemoveBtn.forEach((elem) => elem.addEventListener("click", productRemove));
+productRemoveBtn.forEach((elem) =>
+  elem.addEventListener("click", productRemove)
+);
