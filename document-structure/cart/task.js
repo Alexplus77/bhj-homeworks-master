@@ -40,7 +40,7 @@ const productAdd = (e) => {
                 <div class="cart__product-count">${count}</div>
             </div>`;
       }
-      count = 1;
+     
     }
   });
 };
@@ -53,15 +53,14 @@ const productRemove = (e) => {
       if (arrProdactId.includes(product.dataset.id)) {
         cartProductAll.forEach((elem) => {
           if (elem.dataset.id === product.dataset.id) {
-            if (+elem.children[1].innerHTML === 1) {
+            if (+elem.children[1].innerHTML <= 1) {
               arrProdactId.splice(arrProdactId.indexOf(product.dataset.id), 1);
-
               cartProduct.removeChild(elem);
             } else {
               elem.children[1].innerHTML = +elem.children[1].innerHTML - count;
             }
           }
-          count = 1;
+          
         });
       }
     }
