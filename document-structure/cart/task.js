@@ -22,12 +22,12 @@ const arrProdactId = [];
 const productAdd = (e) => {
   products.forEach((product) => {
     if (product.querySelector(".product__add") === e.target) {
-      const cartProductItem = [
+      const cartProductAll = [
         ...cartProduct.querySelectorAll(".cart__product"),
       ];
 
       if (arrProdactId.includes(product.dataset.id)) {
-        cartProductItem.forEach((elem) => {
+        cartProductAll.forEach((elem) => {
           if (elem.dataset.id === product.dataset.id) {
             elem.children[1].innerHTML = +elem.children[1].innerHTML + count;
           }
