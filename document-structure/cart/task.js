@@ -54,9 +54,8 @@ const productRemove = (e) => {
         cartProductAll.forEach((elem) => {
           if (elem.dataset.id === product.dataset.id) {
             if (+elem.children[1].innerHTML === 1) {
-              arrProdactId.splice(
-                arrProdactId.indexOf(elem.dataset.id === product.dataset.id)
-              );
+              arrProdactId.splice(arrProdactId.indexOf(product.dataset.id), 1);
+
               cartProduct.removeChild(elem);
             } else {
               elem.children[1].innerHTML = +elem.children[1].innerHTML - count;
