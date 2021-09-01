@@ -1,5 +1,7 @@
 const products = [...document.querySelectorAll(".product")];
-const quantityControl = [...document.querySelectorAll(".product__quantity-controls")];
+const quantityControl = [
+  ...document.querySelectorAll(".product__quantity-controls"),
+];
 const productAddBtn = [...document.querySelectorAll(".product__add")];
 const cartProduct = document.querySelector(".cart__products");
 
@@ -14,19 +16,26 @@ const changeQuantity = (e) => {
   }
   e.currentTarget.children[1].innerText = count;
 };
-const arrProdactId = [];
+
 
 const productAdd = (e) => {
   products.forEach((product) => {
-      if (product.querySelector(".product__add") === e.target) {
-        if (arrProdactId.includes(product.dataset.id)){return}
-          arrProdactId.push(product.dataset.id);
+    if (product.querySelector(".product__add") === e.target) {
+      const cartProductItem = [
+        ...cartProduct.querySelectorAll(".cart__product"),
+      ];
+      cartProductItem.forEach((elem) => {
+        if (elem.dataset.id === product.dataset.id) {
+          elem.children[1].innerHTML = +elem.children[1].innerHTML + count;
+        }
+      });
+
       cartProduct.innerHTML += `<div class="cart__product" data-id="${product.dataset.id}">
                 <img class="cart__product-image" src="${product.children[1].src}">
                 <div class="cart__product-count">${count}</div>
             </div>`;
-          count=1
-      console.log(arrProdactId);
+
+      count = 1;
     }
   });
 };
