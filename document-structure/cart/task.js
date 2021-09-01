@@ -29,8 +29,7 @@ const productAdd = (e) => {
 
       if (arrProdactId.includes(product.dataset.id)) {
         cartProductAll.forEach((elem) => {
-            if (elem.dataset.id === product.dataset.id) {
-              
+          if (elem.dataset.id === product.dataset.id) {
             elem.children[1].innerHTML = +elem.children[1].innerHTML + count;
           }
         });
@@ -54,12 +53,11 @@ const productRemove = (e) => {
       if (arrProdactId.includes(product.dataset.id)) {
         cartProductAll.forEach((elem) => {
           if (elem.dataset.id === product.dataset.id) {
-              if (+elem.children[1].innerHTML === 1) {
-                  arrProdactId.splice(
-                    arrProdactId.indexOf(elem.dataset.id === product.dataset.id)
-                  );
-                cartProduct.removeChild(elem)
-              
+            if (+elem.children[1].innerHTML === 1) {
+              arrProdactId.splice(
+                arrProdactId.indexOf(elem.dataset.id === product.dataset.id)
+              );
+              cartProduct.removeChild(elem);
             } else {
               elem.children[1].innerHTML = +elem.children[1].innerHTML - count;
             }
