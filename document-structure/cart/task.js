@@ -23,15 +23,14 @@ const productAdd = (e) => {
     products.forEach((product) => {
         if (product.querySelector(".product__add") === e.target) {
             const cartProductItem = [...cartProduct.querySelectorAll(".cart__product")]
-            cartProductItem.forEach(elem => {
+            
+            if (arrProdactId.includes(product.dataset.id)) {              
+                 cartProductItem.forEach(elem => {
                 if (elem.dataset.id === product.dataset.id) {
                   elem.children[1].innerHTML= +elem.children[1].innerHTML +  count;
                     console.log();
                 }                  
-            })
-            if (arrProdactId.includes(product.dataset.id)) {              
-                 return
-             
+            })           
           } else {
                arrProdactId.push(product.dataset.id);
       cartProduct.innerHTML += `<div class="cart__product" data-id="${product.dataset.id}">
