@@ -20,6 +20,13 @@ const changeQuantity = (e) => {
 const arrProdactId = [];
 
 const productAdd = (e) => {
+  productAddBtn.forEach((buttom) =>
+    buttom.insertAdjacentHTML(
+      "afterEnd",
+      "<div class ='product__remove'>Удалить из корзины</div>"
+    )
+  );
+
   products.forEach((product) => {
     if (product.querySelector(".product__add") === e.target) {
       const cartProductAll = [

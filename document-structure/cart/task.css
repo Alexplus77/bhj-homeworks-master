@@ -81,6 +81,13 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
+.product__remove {
+  background: rgb(235, 98, 98);
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 .product__add:hover {
   opacity: 0.8;
