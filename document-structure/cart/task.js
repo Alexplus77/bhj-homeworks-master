@@ -15,9 +15,9 @@ const changeQuantity = (e) => {
   } else if (e.target.classList.contains("product__quantity-control_inc")) {
     count++;
   }
-
   e.currentTarget.children[1].innerText = count;
 };
+
 const arrProdactId = [];
 
 const productAdd = (e) => {
@@ -30,7 +30,8 @@ const productAdd = (e) => {
       if (arrProdactId.includes(product.dataset.id)) {
         cartProductAll.forEach((elem) => {
           if (elem.dataset.id === product.dataset.id) {
-            elem.children[1].innerHTML = +elem.children[1].innerHTML + count;
+              elem.children[1].innerHTML = +elem.children[1].innerHTML + count;
+             
           }
         });
       } else {
@@ -40,10 +41,12 @@ const productAdd = (e) => {
                 <div class="cart__product-count">${count}</div>
             </div>`;
       }
-     
-    }
+      }
+       count = 1
   });
 };
+
+
 const productRemove = (e) => {
   products.forEach((product) => {
     if (product.querySelector(".product__remove") === e.target) {
@@ -57,13 +60,14 @@ const productRemove = (e) => {
               arrProdactId.splice(arrProdactId.indexOf(product.dataset.id), 1);
               cartProduct.removeChild(elem);
             } else {
-              elem.children[1].innerHTML = +elem.children[1].innerHTML - count;
+                elem.children[1].innerHTML = +elem.children[1].innerHTML - count;
+                
             }
           }
-          
         });
       }
-    }
+      }
+      count = 1
   });
 };
 
