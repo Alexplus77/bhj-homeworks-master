@@ -96,3 +96,9 @@ body {
 .product-shadow {
   position: absolute;
 }
+.fa-times {
+position: absolute;
+margin-top: 0px;
+margin-left: 7px;
+color: rgb(233, 19, 19);
+}
