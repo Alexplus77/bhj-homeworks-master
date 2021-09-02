@@ -7,6 +7,7 @@ const btnIncrement = [
 ];
 const productAddBtn = [...document.querySelectorAll(".product__add")];
 const productRemoveBtn = [...document.querySelectorAll(".product__remove")];
+
 const cartProduct = document.querySelector(".cart__products");
 
 let count = 1;
@@ -22,8 +23,7 @@ const handleDecrement = (e) => {
 }
 
 const handleIncrement = (e) => {
-  count++;
-  console.log(e.target.parentElement);
+  count++;  
   e.target.parentElement.children[1].innerText = count;
 }
 
@@ -35,7 +35,7 @@ const markupCart = (selector1, selector2) => {
                 <div class="cart__product-count">${count}</div>                
             </div>`;
 };
-
+let btnClose
 const productAdd = (e) => {
   products.forEach((product) => {
     if (product.querySelector(".product__add") === e.target) {
@@ -47,11 +47,15 @@ const productAdd = (e) => {
         cartProductAll.forEach((elem) => {
           if (elem.dataset.id === product.dataset.id) {
             elem.children[2].innerHTML = +elem.children[2].innerHTML + count;
+            elem.addEventListener("click", () => {
+              cartProduct.removeChild(elem);
+            });
           }
         });
       } else {
         arrProdactId.push(product.dataset.id);
-        markupCart(cartProduct, product);        
+        markupCart(cartProduct, product);
+        btnClose=[...document.querySelectorAll('.fa')]
       }
     }    
   });
@@ -67,16 +71,20 @@ const productRemove = (e) => {
       if (arrProdactId.includes(product.dataset.id)) {
         cartProductAll.forEach((elem) => {
           if (elem.dataset.id === product.dataset.id) {
-            if (+elem.children[2].innerHTML <= minNumberOfProducts) {
-              arrProdactId.splice(arrProdactId.indexOf(product.dataset.id), 1);
-              cartProduct.removeChild(elem);
-            } else {
-              elem.children[2].innerHTML = +elem.children[2].innerHTML - count;
+            cartProduct.removeChild(elem);
               elem.children[0].addEventListener("click", () => {
-                
-                elem.children[2].innerHTML = +elem.children[2].innerHTML - 1;
+                 cartProduct.removeChild(elem);
               });
-            }
+            // if (+elem.children[2].innerHTML <= minNumberOfProducts) {
+            //   arrProdactId.splice(arrProdactId.indexOf(product.dataset.id), 1);
+            //   cartProduct.removeChild(elem);
+            // } else {
+            //   elem.children[2].innerHTML = +elem.children[2].innerHTML - count;
+            //   elem.children[0].addEventListener("click", () => {
+
+            //     elem.children[2].innerHTML = +elem.children[2].innerHTML - 1;
+            //   });
+            // }
           }
         });
       }
@@ -92,3 +100,4 @@ productAddBtn.forEach((elem) => elem.addEventListener("click", productAdd));
 productRemoveBtn.forEach((elem) =>
   elem.addEventListener("click", productRemove)
 );
+btnClose. addEventListener('click', productRemove)
