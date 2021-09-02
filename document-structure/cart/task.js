@@ -47,9 +47,7 @@ const productAdd = (e) => {
         cartProductAll.forEach((elem) => {
           if (elem.dataset.id === product.dataset.id) {
             elem.children[2].innerHTML = +elem.children[2].innerHTML + count;
-            elem.addEventListener("click", () => {
-              cartProduct.removeChild(elem);
-            });
+            
           }
         });
       } else {
