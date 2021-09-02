@@ -35,7 +35,7 @@ const markupCart = (selector1, selector2) => {
                 <div class="cart__product-count">${count}</div>                
             </div>`;
 };
-let btnClose
+let btnClose=''
 const productAdd = (e) => {
   products.forEach((product) => {
     if (product.querySelector(".product__add") === e.target) {
@@ -61,7 +61,7 @@ const productAdd = (e) => {
   });
   count=1
 };
-
+console.log(btnClose)
 const productRemove = (e) => {
   products.forEach((product) => {
     if (product.querySelector(".product__remove") === e.target) {
@@ -71,20 +71,18 @@ const productRemove = (e) => {
       if (arrProdactId.includes(product.dataset.id)) {
         cartProductAll.forEach((elem) => {
           if (elem.dataset.id === product.dataset.id) {
-            cartProduct.removeChild(elem);
+           
+             
+            if (+elem.children[2].innerHTML <= minNumberOfProducts) {
+              arrProdactId.splice(arrProdactId.indexOf(product.dataset.id), 1);
+              cartProduct.removeChild(elem);
+            } else {
+              elem.children[2].innerHTML = +elem.children[2].innerHTML - count;
               elem.children[0].addEventListener("click", () => {
-                 cartProduct.removeChild(elem);
-              });
-            // if (+elem.children[2].innerHTML <= minNumberOfProducts) {
-            //   arrProdactId.splice(arrProdactId.indexOf(product.dataset.id), 1);
-            //   cartProduct.removeChild(elem);
-            // } else {
-            //   elem.children[2].innerHTML = +elem.children[2].innerHTML - count;
-            //   elem.children[0].addEventListener("click", () => {
 
-            //     elem.children[2].innerHTML = +elem.children[2].innerHTML - 1;
-            //   });
-            // }
+                elem.children[2].innerHTML = +elem.children[2].innerHTML - 1;
+              });
+            }
           }
         });
       }
@@ -100,4 +98,3 @@ productAddBtn.forEach((elem) => elem.addEventListener("click", productAdd));
 productRemoveBtn.forEach((elem) =>
   elem.addEventListener("click", productRemove)
 );
-btnClose. addEventListener('click', productRemove)
