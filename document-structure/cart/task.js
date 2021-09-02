@@ -61,7 +61,7 @@ const productAdd = (e) => {
   });
   count=1
 };
-console.log(btnClose)
+
 const productRemove = (e) => {
   products.forEach((product) => {
     if (product.querySelector(".product__remove") === e.target) {
