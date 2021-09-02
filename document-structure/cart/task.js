@@ -35,7 +35,7 @@ const markupCart = (selector1, selector2) => {
                 <div class="cart__product-count">${count}</div>                
             </div>`;
 };
-let btnClose=''
+
 const productAdd = (e) => {
   products.forEach((product) => {
     if (product.querySelector(".product__add") === e.target) {
