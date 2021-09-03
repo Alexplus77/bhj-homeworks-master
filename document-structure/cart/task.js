@@ -26,7 +26,7 @@ const handleIncrement = (e) => {
   e.target.parentElement.children[1].innerText = count;
 };
 
-const renderCartHTML = (id, image, count) => {
+const renderCartHTML = (id, image) => {
   const cart = document.createElement("div");
   cart.classList.add("cart__product");
   cart.setAttribute("data-id", id);
@@ -50,7 +50,7 @@ const renderCartHTML = (id, image, count) => {
   //cart.appendChild(cart);
 };
 
-const saveProductsToCart = (id, image, count) => {
+const saveProductsToCart = (id, image) => {
   const findProdactCart = storeCart.find((elem) => elem.id === id);
   if (findProdactCart) {
     const cartProductAll = [...cartProduct.querySelectorAll(".cart__product")];
@@ -63,16 +63,16 @@ const saveProductsToCart = (id, image, count) => {
       imageLink: image,
       count: count,
     });
-    renderCartHTML(id, image, count);
+    renderCartHTML(id, image);
   }
 };
 
-const addProductToCart = (e, count) => {
+const addProductToCart = (e) => {
   const targetId = e.target.closest(".product").dataset.id;
   const findProduct = storeShop.find((elem) => elem.id === targetId);
   const idProduct = findProduct.id;
   const image = findProduct.imageLink;
-  saveProductsToCart(idProduct, image, count);
+  saveProductsToCart(idProduct, image);
   console.log(storeCart)
   count = 1;
 };
