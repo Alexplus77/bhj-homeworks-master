@@ -67,7 +67,7 @@ const saveProductsToCart = (id, image, count) => {
   }
 };
 
-const addProductToCart = (e, id, img, count) => {
+const addProductToCart = (e, count) => {
   const targetId = e.target.closest(".product").dataset.id;
   const findProduct = storeShop.find((elem) => elem.id === targetId);
   const idProduct = findProduct.id;
