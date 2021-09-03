@@ -43,7 +43,7 @@ const renderCartHTML = (id, image) => {
 
   const rm = document.createElement("i");
   rm.classList.add("cart__product-remove");
-  rm.classList.add("fas");
+  rm.classList.add("fa");
   rm.classList.add("fa-times");
   cart.appendChild(rm);
 };
@@ -53,7 +53,9 @@ const saveProductsToCart = (id, image) => {
   console.log(findProdactCart);
   if (findProdactCart) {
     const cartProductAll = [...cartProduct.querySelectorAll(".cart__product")];
-    const cartProductOne = cartProductAll.find((elem) => elem.dataset.id === id);
+    const cartProductOne = cartProductAll.find(
+      (elem) => elem.dataset.id === id
+    );
     cartProductOne.children[1].innerHTML =
       +cartProductOne.children[1].innerHTML + count;
   } else {
