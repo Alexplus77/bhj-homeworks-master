@@ -58,6 +58,7 @@ const saveProductsToCart = (id, image) => {
     );
     cartProductOne.children[1].innerHTML =
       +cartProductOne.children[1].innerHTML + count;
+    findProdactCart.count = cartProductOne.children[1].innerHTML;
   } else {
     storeCart.push({
       id: id,
