@@ -55,7 +55,7 @@ const saveProductsToCart = (id, image) => {
   if (findProdactCart) {
     const cartProductAll = [...cartProduct.querySelectorAll(".cart__product")];
     cartProductAll.forEach((elem) => {
-      elem.children[2].innerHTML = +elem.children[2].innerHTML + count;
+      elem.children[1].innerHTML = +elem.children[1].innerHTML + count;
     });
   } else {
     storeCart.push({
