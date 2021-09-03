@@ -30,7 +30,8 @@ const renderCartHTML = (id, image, count) => {
   const cart = document.createElement("div");
   cart.classList.add("cart__product");
   cart.setAttribute("data-id", id);
-
+  cartProduct.appendChild(cart)
+  
   const img = document.createElement("img");
   img.classList.add("cart__product-image");
   img.setAttribute("src", image);
@@ -72,6 +73,7 @@ const addProductToCart = (e, id, img, count) => {
   const idProduct = findProduct.id;
   const image = findProduct.imageLink;
   saveProductsToCart(idProduct, image, count);
+  console.log(storeCart)
   count = 1;
 };
 
