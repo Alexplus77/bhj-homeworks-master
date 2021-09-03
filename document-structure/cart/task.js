@@ -1,5 +1,4 @@
 import { storeCart, storeShop } from "./store.js";
-console.log(storeShop);
 
 const products = [...document.querySelectorAll(".product")];
 const btnDecrement = [
@@ -47,7 +46,7 @@ const renderCartHTML = (id, image) => {
   rm.classList.add("fas");
   rm.classList.add("fa-times");
   cart.appendChild(rm);
-  //cart.appendChild(cart);
+  
 };
 
 const saveProductsToCart = (id, image) => {
