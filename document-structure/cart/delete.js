@@ -47,7 +47,7 @@ const productAdd = (e) => {
         cartProductAll.forEach((elem) => {
           if (elem.dataset.id === product.dataset.id) {
             elem.children[2].innerHTML = +elem.children[2].innerHTML + count;
-            console.log(elem.children[1].getBoundingClientRect());
+            
           }
         });
       } else {
