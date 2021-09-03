@@ -51,11 +51,12 @@ const renderCartHTML = (id, image) => {
 
 const saveProductsToCart = (id, image) => {
   const findProdactCart = storeCart.find((elem) => elem.id === id);
+  console.log(findProdactCart)
   if (findProdactCart) {
     const cartProductAll = [...cartProduct.querySelectorAll(".cart__product")];
-    cartProductAll.forEach((elem) => {
-      elem.children[1].innerHTML = +elem.children[1].innerHTML + count;
-    });
+    const cartProductOne= cartProductAll.find(elem => elem.dataset.id === id)
+     cartProductOne.children[1].innerHTML = +cartProductOne.children[1].innerHTML + count;    
+    
   } else {
     storeCart.push({
       id: id,
