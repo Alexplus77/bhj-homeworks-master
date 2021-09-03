@@ -29,8 +29,8 @@ const renderCartHTML = (id, image) => {
   const cart = document.createElement("div");
   cart.classList.add("cart__product");
   cart.setAttribute("data-id", id);
-  cartProduct.appendChild(cart)
-  
+  cartProduct.appendChild(cart);
+
   const img = document.createElement("img");
   img.classList.add("cart__product-image");
   img.setAttribute("src", image);
@@ -46,17 +46,16 @@ const renderCartHTML = (id, image) => {
   rm.classList.add("fas");
   rm.classList.add("fa-times");
   cart.appendChild(rm);
-  
 };
 
 const saveProductsToCart = (id, image) => {
   const findProdactCart = storeCart.find((elem) => elem.id === id);
-  console.log(findProdactCart)
+  console.log(findProdactCart);
   if (findProdactCart) {
     const cartProductAll = [...cartProduct.querySelectorAll(".cart__product")];
-    const cartProductOne= cartProductAll.find(elem => elem.dataset.id === id)
-     cartProductOne.children[1].innerHTML = +cartProductOne.children[1].innerHTML + count;    
-    
+    const cartProductOne = cartProductAll.find((elem) => elem.dataset.id === id);
+    cartProductOne.children[1].innerHTML =
+      +cartProductOne.children[1].innerHTML + count;
   } else {
     storeCart.push({
       id: id,
@@ -73,7 +72,7 @@ const addProductToCart = (e) => {
   const idProduct = findProduct.id;
   const image = findProduct.imageLink;
   saveProductsToCart(idProduct, image);
-  console.log(storeCart)
+  console.log(storeCart);
   count = 1;
 };
 
