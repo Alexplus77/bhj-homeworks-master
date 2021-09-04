@@ -32,28 +32,22 @@ const handleTask = (e) => {
   });
   markupTask(taskInput.value, idTask);
   taskInput.value = "";
-  removeTask(idTask);
+  
 };
 
 
-const removeTask = () => {
-  const removeBtn = [...document.querySelectorAll(".task__remove")];
-  removeBtn.forEach((btn) =>
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const targetId = +e.target.closest(".task").getAttribute("id");
+const removeTask = (e) => {
+    e.preventDefault();
+  if (!e.target.classList.contains('task__remove')) {return }
+     const targetId = +e.target.closest(".task").getAttribute("id");
       const taskFromBase = todoDataBase.find((todo) => +todo.id === targetId);
-      if (taskFromBase) {
-        const taskListAll = [...taskList.querySelectorAll(".task")];
-        const taskOne = taskListAll.find(
-          (elem) => elem === e.target.closest(".task")
-        );
+  if (taskFromBase) {
         todoDataBase.splice(todoDataBase.indexOf(taskFromBase), 1);
-        taskList.removeChild(taskOne);
-        console.log(todoDataBase);
-      }
-    })
-  );
+    e.target.parentElement.remove();
+    console.log(todoDataBase)
+  }  
+   
 };
 
 taskAddBtn.addEventListener("click", handleTask);
+taskList.addEventListener('click', (e)=> removeTask(e))
