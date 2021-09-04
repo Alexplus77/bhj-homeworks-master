@@ -4,9 +4,10 @@ const taskInput = document.querySelector(".tasks__input");
 const taskList = document.querySelector(".tasks__list");
 const taskAddBtn = document.querySelector(".tasks__add");
 
-const markupTask = (text) => {
+const markupTask = (text, id) => {
   const task = document.createElement("div");
   task.classList.add("task");
+  task.setAttribute("id", id);
   taskList.appendChild(task);
 
   const titleTask = document.createElement("div");
@@ -22,31 +23,35 @@ const markupTask = (text) => {
 };
 
 const handleTask = (e) => {
-    e.preventDefault();    
-    todoDataBase.push(taskInput.value);    
-  markupTask(taskInput.value);
+  e.preventDefault();
+  const idTask = Math.random();
+  todoDataBase.push({
+    id: idTask,
+    title: taskInput.value,
+  });
+  markupTask(taskInput.value, idTask);
   taskInput.value = "";
-  removeTask();
+  removeTask(idTask);
 };
 
 const removeTask = () => {
-    const removeBtn = [...document.querySelectorAll(".task__remove")];
-    
+  const removeBtn = [...document.querySelectorAll(".task__remove")];
   removeBtn.forEach((btn) =>
     btn.addEventListener("click", (e) => {
       e.preventDefault();
-      const targetTask = e.target.previousElementSibling.innerHTML;
-      const taskFromBase = todoDataBase.find((todo) => todo === targetTask);
+      const targetId = +e.target.closest(".task").getAttribute("id");
+      const taskFromBase = todoDataBase.find((todo) => +todo.id === targetId);
       if (taskFromBase) {
         const taskListAll = [...taskList.querySelectorAll(".task")];
         const taskOne = taskListAll.find(
           (elem) => elem === e.target.closest(".task")
         );
         todoDataBase.splice(todoDataBase.indexOf(taskFromBase), 1);
-          taskList.removeChild(taskOne);
-          console.log(todoDataBase);
+        taskList.removeChild(taskOne);
+        console.log(todoDataBase);
       }
     })
   );
 };
+
 taskAddBtn.addEventListener("click", handleTask);
