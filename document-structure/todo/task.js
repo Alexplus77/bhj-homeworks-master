@@ -24,10 +24,10 @@ const markupTask = (text, id) => {
 
 const handleTask = (e) => {
   e.preventDefault();
-  const idTask = Math.random();
   if (!taskInput.value.trim().length) {
     return alert("Вы не указали задачу!!!");
   }
+  const idTask = Math.random();  
   todoDataBase.push({
     id: idTask,
     title: taskInput.value,
