@@ -23,7 +23,7 @@ const markupTask = (text) => {
 
 const handleTask = (e) => {
     e.preventDefault();    
-  todoDataBase.push(taskInput.value);  
+    todoDataBase.push(taskInput.value);    
   markupTask(taskInput.value);
   taskInput.value = "";
   removeTask();
