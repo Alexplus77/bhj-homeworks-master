@@ -24,30 +24,31 @@ const markupTask = (text, id) => {
 
 const handleTask = (e) => {
   e.preventDefault();
-    const idTask = Math.random();
-  if(!taskInput.value.trim().length){return alert('Вы не указали задачу!!!')}
+  const idTask = Math.random();
+  if (!taskInput.value.trim().length) {
+    return alert("Вы не указали задачу!!!");
+  }
   todoDataBase.push({
     id: idTask,
     title: taskInput.value,
   });
   markupTask(taskInput.value, idTask);
   taskInput.value = "";
-  
 };
 
-
 const removeTask = (e) => {
-    e.preventDefault();
-  if (!e.target.classList.contains('task__remove')) {return }
-     const targetId = +e.target.closest(".task").getAttribute("id");
-      const taskFromBase = todoDataBase.find((todo) => +todo.id === targetId);
+  e.preventDefault();
+  if (!e.target.classList.contains("task__remove")) {
+    return;
+  }
+  const targetId = +e.target.closest(".task").getAttribute("id");
+  const taskFromBase = todoDataBase.find((todo) => +todo.id === targetId);
   if (taskFromBase) {
-        todoDataBase.splice(todoDataBase.indexOf(taskFromBase), 1);
+    todoDataBase.splice(todoDataBase.indexOf(taskFromBase), 1);
     e.target.parentElement.remove();
-    console.log(todoDataBase)
-  }  
-   
+    console.log(todoDataBase);
+  }
 };
 
 taskAddBtn.addEventListener("click", handleTask);
-taskList.addEventListener('click', (e)=> removeTask(e))
+taskList.addEventListener("click", (e) => removeTask(e));
