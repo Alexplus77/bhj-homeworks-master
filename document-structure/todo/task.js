@@ -44,10 +44,10 @@ const removeTask = (e) => {
   const targetId = +e.target.closest(".task").getAttribute("id");
   const taskFromBase = todoDataBase.find((todo) => +todo.id === targetId);
   if (taskFromBase) {
-    todoDataBase.splice(todoDataBase.indexOf(taskFromBase), 1);
-    e.target.parentElement.remove();
+    todoDataBase.splice(todoDataBase.indexOf(taskFromBase), 1);   
     console.log(todoDataBase);
   }
+   e.target.parentElement.remove();
 };
 
 taskAddBtn.addEventListener("click", handleTask);
