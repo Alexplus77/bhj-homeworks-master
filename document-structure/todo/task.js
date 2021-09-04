@@ -24,7 +24,8 @@ const markupTask = (text, id) => {
 
 const handleTask = (e) => {
   e.preventDefault();
-  const idTask = Math.random();
+    const idTask = Math.random();
+  if(!taskInput.value.trim().length){return alert('Вы не указали задачу!!!')}
   todoDataBase.push({
     id: idTask,
     title: taskInput.value,
@@ -33,6 +34,7 @@ const handleTask = (e) => {
   taskInput.value = "";
   removeTask(idTask);
 };
+
 
 const removeTask = () => {
   const removeBtn = [...document.querySelectorAll(".task__remove")];
