@@ -1,6 +1,5 @@
 import { storeCart, storeShop } from "./store.js";
 
-const products = [...document.querySelectorAll(".product")];
 const btnDecrement = [
   ...document.querySelectorAll(".product__quantity-control_dec"),
 ];
@@ -8,9 +7,9 @@ const btnIncrement = [
   ...document.querySelectorAll(".product__quantity-control_inc"),
 ];
 const productAddBtn = [...document.querySelectorAll(".product__add")];
-const productRemoveBtn = [...document.querySelectorAll(".product__remove")];
 
 const cartProduct = document.querySelector(".cart__products");
+
 let count = 1;
 const minNumberOfProducts = 1;
 
@@ -31,6 +30,12 @@ const renderCartHTML = (id, image) => {
   cart.setAttribute("data-id", id);
   cartProduct.appendChild(cart);
 
+  const rm = document.createElement("i");
+  rm.classList.add("cart__product-remove");
+  rm.classList.add("fa");
+  rm.classList.add("fa-times");
+  cart.appendChild(rm);
+
   const img = document.createElement("img");
   img.classList.add("cart__product-image");
   img.setAttribute("src", image);
@@ -40,25 +45,19 @@ const renderCartHTML = (id, image) => {
   countCart.classList.add("cart__product-count");
   countCart.textContent = count;
   cart.appendChild(countCart);
-
-  const rm = document.createElement("i");
-  rm.classList.add("cart__product-remove");
-  rm.classList.add("fa");
-  rm.classList.add("fa-times");
-  cart.appendChild(rm);
 };
 
 const saveProductsToCart = (id, image) => {
   const findProdactCart = storeCart.find((elem) => elem.id === id);
-  console.log(findProdactCart);
+
   if (findProdactCart) {
     const cartProductAll = [...cartProduct.querySelectorAll(".cart__product")];
     const cartProductOne = cartProductAll.find(
       (elem) => elem.dataset.id === id
     );
-    cartProductOne.children[1].innerHTML =
-      +cartProductOne.children[1].innerHTML + count;
-    findProdactCart.count = cartProductOne.children[1].innerHTML;
+    cartProductOne.children[2].innerHTML =
+      +cartProductOne.children[2].innerHTML + count;
+    findProdactCart.count = cartProductOne.children[2].innerHTML;
   } else {
     storeCart.push({
       id: id,
@@ -75,8 +74,33 @@ const addProductToCart = (e) => {
   const idProduct = findProduct.id;
   const image = findProduct.imageLink;
   saveProductsToCart(idProduct, image);
-  console.log(storeCart);
+  removFromCart();
+
   count = 1;
+};
+
+const removFromCart = () => {
+  const cartProductAll = [...cartProduct.querySelectorAll(".cart__product")];
+  const removeBtn = [...cartProduct.querySelectorAll(".cart__product-remove")];
+  removeBtn.forEach((btn) =>
+    btn.addEventListener("click", (e) => {
+      const productFromCart = storeCart.find(
+        (elem) => elem.id === e.target.closest(".cart__product").dataset.id
+      );
+      const cartProductOne = cartProductAll.find(
+        (elem) => elem.dataset.id === productFromCart.id
+      );
+      if (productFromCart) {
+        if (productFromCart.count === minNumberOfProducts) {
+          cartProduct.removeChild(cartProductOne);
+          storeCart.splice(storeCart.indexOf(productFromCart), 1);
+        } else {
+          productFromCart.count = productFromCart.count - 1;
+          cartProductOne.children[2].innerHTML = productFromCart.count;
+        }
+      }
+    })
+  );
 };
 
 btnDecrement.forEach((elem) => elem.addEventListener("click", handleDecrement));
