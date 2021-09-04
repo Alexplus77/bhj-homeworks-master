@@ -3,6 +3,7 @@ import { todoDataBase } from "./dataBase.js";
 const taskInput = document.querySelector(".tasks__input");
 const taskList = document.querySelector(".tasks__list");
 const taskAddBtn = document.querySelector(".tasks__add");
+
 const markupTask = (text) => {
   const task = document.createElement("div");
   task.classList.add("task");
