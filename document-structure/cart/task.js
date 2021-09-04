@@ -87,10 +87,11 @@ const removFromCart = () => {
       const productFromCart = storeCart.find(
         (elem) => elem.id === e.target.closest(".cart__product").dataset.id
       );
-       const cartProductOne = cartProductAll.find(
-        (elem) => elem.dataset.id === productFromCart.id
-      );
+
       if (productFromCart) {
+        const cartProductOne = cartProductAll.find(
+          (elem) => elem.dataset.id === productFromCart.id
+        );
         if (productFromCart.count === minNumberOfProducts) {
           cartProduct.removeChild(cartProductOne);
           storeCart.splice(storeCart.indexOf(productFromCart), 1);
@@ -101,13 +102,11 @@ const removFromCart = () => {
       }
     })
   );
-  console.log(storeCart)
+  console.log(storeCart);
 };
-
 
 btnDecrement.forEach((elem) => elem.addEventListener("click", handleDecrement));
 btnIncrement.forEach((elem) => elem.addEventListener("click", handleIncrement));
 productAddBtn.forEach((elem) =>
   elem.addEventListener("click", addProductToCart)
 );
-
