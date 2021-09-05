@@ -19,8 +19,7 @@ const handleTooltip = (e) => {
       tooltipDiv.classList.toggle("tooltip_active");
       tooltipDiv.innerHTML=textTooltip
         positionTooltip(e, tooltipDiv);  
-    }
-    
+    }    
 };
 
 const removeTooltip = (e) => {
