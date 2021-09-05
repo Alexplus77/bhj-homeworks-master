@@ -12,6 +12,7 @@ const cartProduct = document.querySelector(".cart__products");
 
 let count = 1;
 const minNumberOfProducts = 1;
+const initialValue=1
 
 const handleDecrement = (e) => {
   if (count > minNumberOfProducts) {
@@ -60,9 +61,9 @@ const saveProductsToCart = (id, image) => {
     findProdactCart.count = cartProductOne.children[2].innerHTML;
   } else {
     storeCart.push({
-      id: id,
+      id,
       imageLink: image,
-      count: count,
+      count,
     });
     renderCartHTML(id, image);
   }
@@ -76,7 +77,7 @@ const addProductToCart = (e) => {
   saveProductsToCart(idProduct, image);
   removFromCart();
 
-  count = 1;
+  count = initialValue;
 };
 
 const removFromCart = () => {
