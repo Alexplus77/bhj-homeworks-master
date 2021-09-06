@@ -15,7 +15,7 @@ const handleTooltip = (e) => {
   const tooltipDiv = document.querySelector(".tooltip");
   const findLink = tooltipLinkAll.find((elem) => elem === e.target);
   if (findLink) {
-    tooltipDiv.classList.toggle("tooltip_active");
+    tooltipDiv.classList.add("tooltip_active");
     tooltipDiv.innerHTML = findLink.getAttribute("title");
     positionTooltip(e, tooltipDiv);
   } else {
