@@ -11,17 +11,16 @@ const markupTooltip = () => {
 
 const handleTooltip = (e) => {
   e.preventDefault();
-  const findLink = tooltipLinkAll.find((elem) => elem === e.target);
-  if (findLink) {
-    markupTooltip();
-    const tooltipDiv = document.querySelector(".tooltip");
-    tooltipDiv.classList.add("tooltip_active");
-    tooltipDiv.innerHTML = findLink.getAttribute("title");
-    positionTooltip(e, tooltipDiv);
-    
-  } else {
-    removeTooltip();
-  }
+  if (body.contains(document.querySelector(".tooltip_active"))){removeTooltip()}
+  markupTooltip();  
+  const tooltipDiv = document.querySelector(".tooltip");  
+  tooltipDiv.classList.toggle("tooltip_active");
+  tooltipDiv.innerHTML = e.target.getAttribute("title");
+  positionTooltip(e, tooltipDiv);
+  
+  console.log(document.querySelectorAll(".tooltip"));
+ //removeTooltip();
+ 
 };
 
 const positionTooltip = (e, tooltipDiv) => {
