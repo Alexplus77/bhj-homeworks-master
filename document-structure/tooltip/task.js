@@ -41,7 +41,7 @@ const removeTooltipScroll = () => {
     removeTooltip();
   }
 };
+tooltipLinkAll.forEach(link=>link.addEventListener("click", handleTooltip))
 
-body.addEventListener("click", handleTooltip);
 document.addEventListener("scroll", removeTooltipScroll);
 
