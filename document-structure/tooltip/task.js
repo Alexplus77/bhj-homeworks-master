@@ -13,9 +13,9 @@ const handleTooltip = (e) => {
   e.preventDefault();
   markupTooltip();
   const tooltipDiv = document.querySelector(".tooltip");
-    const findLink = tooltipLinkAll.find((elem) => elem === e.target);
+    const findLink = tooltipLinkAll.find((elem) => elem.parentElement.contains(e.currentTarget));
     
-    if (findLink) {
+    if (findLink ) {
        tooltipDiv.classList.add("tooltip_active");
     tooltipDiv.innerHTML = findLink.getAttribute("title");
     positionTooltip(e, tooltipDiv);
@@ -41,7 +41,12 @@ const removeTooltipScroll = () => {
     removeTooltip();
   }
 };
-tooltipLinkAll.forEach(link=>link.addEventListener("click", handleTooltip))
+tooltipLinkAll.forEach(link => link.addEventListener("click", handleTooltip))
 
+document.addEventListener('click', (e) => {
+  if (!tooltipLinkAll.includes(e.target)) {
+    removeTooltip();
+  }
+})
 document.addEventListener("scroll", removeTooltipScroll);
 
