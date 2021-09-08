@@ -11,14 +11,14 @@ const markupTooltip = () => {
 
 const handleTooltip = (e) => {
   e.preventDefault();
-  markupTooltip();
-  const tooltipDiv = document.querySelector(".tooltip");
-    const findLink = tooltipLinkAll.find((elem) => elem.parentElement.contains(e.currentTarget));
-    
-    if (findLink ) {
-       tooltipDiv.classList.add("tooltip_active");
+  const findLink = tooltipLinkAll.find((elem) => elem === e.target);
+  if (findLink) {
+    markupTooltip();
+    const tooltipDiv = document.querySelector(".tooltip");
+    tooltipDiv.classList.add("tooltip_active");
     tooltipDiv.innerHTML = findLink.getAttribute("title");
     positionTooltip(e, tooltipDiv);
+    
   } else {
     removeTooltip();
   }
@@ -33,7 +33,7 @@ const positionTooltip = (e, tooltipDiv) => {
 
 const removeTooltip = () => {
   const tooltipDiv = document.querySelector(".tooltip");
-  tooltipDiv.classList.remove("tooltip_active");
+  body.removeChild(tooltipDiv);
 };
 
 const removeTooltipScroll = () => {
@@ -41,12 +41,11 @@ const removeTooltipScroll = () => {
     removeTooltip();
   }
 };
-tooltipLinkAll.forEach(link => link.addEventListener("click", handleTooltip))
+tooltipLinkAll.forEach((link) => link.addEventListener("click", handleTooltip));
 
-document.addEventListener('click', (e) => {
+document.addEventListener("click", (e) => {
   if (!tooltipLinkAll.includes(e.target)) {
     removeTooltip();
   }
-})
+});
 document.addEventListener("scroll", removeTooltipScroll);
-
