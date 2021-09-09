@@ -1,5 +1,5 @@
 const body = document.querySelector("body");
-
+const allLink = [...document.querySelectorAll(".has-tooltip")];
 const offsetTopPosition = 30;
 let prevTooltip = null;
 
@@ -12,9 +12,9 @@ const markupTooltip = () => {
 const handleTooltip = (e) => {
   e.preventDefault();
   const tooltipDiv = document.querySelector(".tooltip");
-  const textTooltip = e.target.innerHTML
+  const textTooltip = e.target.innerText
   tooltipDiv.innerHTML = textTooltip;
-  prevTooltip === e.target.innerHTML
+  prevTooltip === e.target.innerText
     ? tooltipDiv.classList.toggle("tooltip_active")
     : tooltipDiv.classList.add("tooltip_active");
   prevTooltip = textTooltip;
@@ -39,6 +39,7 @@ const removeTooltipScroll = () => {
   }
 };
 
-body.addEventListener("click", handleTooltip);
+
+allLink.forEach(link=>link.addEventListener("click", handleTooltip))
 document.addEventListener("scroll", removeTooltipScroll);
 document.addEventListener("DOMContentLoaded", markupTooltip);
