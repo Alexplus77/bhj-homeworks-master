@@ -1,4 +1,3 @@
-const tooltipLinkAll = [...document.querySelectorAll(".has-tooltip")];
 const body = document.querySelector("body");
 
 const offsetTopPosition = 30;
@@ -13,9 +12,9 @@ const markupTooltip = () => {
 const handleTooltip = (e) => {
   e.preventDefault();
   const tooltipDiv = document.querySelector(".tooltip");
-  const textTooltip = e.target.getAttribute("title");
+  const textTooltip = e.target.innerHTML
   tooltipDiv.innerHTML = textTooltip;
-  prevTooltip === e.target.getAttribute("title")
+  prevTooltip === e.target.innerHTML
     ? tooltipDiv.classList.toggle("tooltip_active")
     : tooltipDiv.classList.add("tooltip_active");
   prevTooltip = textTooltip;
