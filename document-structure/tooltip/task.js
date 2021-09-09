@@ -2,6 +2,7 @@ const tooltipLinkAll = [...document.querySelectorAll(".has-tooltip")];
 const body = document.querySelector("body");
 
 const offsetTopPosition = 30;
+let prevTooltip = null;
 
 const markupTooltip = () => {
   const divTooltip = document.createElement("div");
@@ -11,16 +12,14 @@ const markupTooltip = () => {
 
 const handleTooltip = (e) => {
   e.preventDefault();
-  markupTooltip();
   const tooltipDiv = document.querySelector(".tooltip");
-    const findLink = tooltipLinkAll.find((elem) => elem === e.target);    
-    if (findLink) {
-       tooltipDiv.classList.add("tooltip_active");
-    tooltipDiv.innerHTML = findLink.getAttribute("title");
-    positionTooltip(e, tooltipDiv);
-  } else {
-    removeTooltip();
-  }
+  const textTooltip = e.target.getAttribute("title");
+  tooltipDiv.innerHTML = textTooltip;
+  prevTooltip === e.target.getAttribute("title")
+    ? tooltipDiv.classList.toggle("tooltip_active")
+    : tooltipDiv.classList.add("tooltip_active");
+  prevTooltip = textTooltip;
+  positionTooltip(e, tooltipDiv);
 };
 
 const positionTooltip = (e, tooltipDiv) => {
@@ -43,4 +42,4 @@ const removeTooltipScroll = () => {
 
 body.addEventListener("click", handleTooltip);
 document.addEventListener("scroll", removeTooltipScroll);
-
+document.addEventListener("DOMContentLoaded", markupTooltip);
