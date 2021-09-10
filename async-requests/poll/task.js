@@ -1,9 +1,10 @@
 const titlePoll = document.querySelector(".poll__title");
 const answersPoll = document.querySelector(".poll__answers");
+const poll = document.querySelector(".poll");
 
 let jsonPost = { stat: [] };
 
-async function getOject() {
+const getPollData = async () => {
   try {
     const response = await fetch(
       "https://netology-slow-rest.herokuapp.com/poll.php"
@@ -13,14 +14,19 @@ async function getOject() {
   } catch (error) {
     console.log(error);
   }
-}
+};
 
-
+(function () {
+  const getPollDataBtn = document.createElement("button");
+  getPollDataBtn.classList.add("getPollData");
+  getPollDataBtn.innerText = "getPollData";
+  poll.appendChild(getPollDataBtn);
+})();
 
 const markupPoll = ({ data: { title, answers } }) => {
   titlePoll.innerText = title;
   titlePoll.classList.add("poll__answers_active");
-  answers.map((answer) => {
+  return answers.map((answer) => {
     const answersBtn = document.createElement("button");
     answersBtn.classList.add("poll__answer");
     answersBtn.setAttribute("id", Math.random());
@@ -32,9 +38,8 @@ const markupPoll = ({ data: { title, answers } }) => {
 const handlerPollAlert = (e) => {
   if (e.target.classList.contains("poll__answer")) {
     alert("Спасибо, ваш голос засчитан!");
-      createJsonPost(e);
-      console.log(jsonPost)
-    //sendJsonPost();
+    createJsonPost(e);
+    console.log(jsonPost);
   }
 };
 
@@ -55,32 +60,15 @@ const createJsonPost = (e) => {
     findAnswer.votes++;
   }
 };
+const getPollBtn = (e) => {
+   
+  const btnAnswers = [...document.querySelectorAll(".poll__answer")];
+  if (e.target.classList.contains("getPollData")) {
+    btnAnswers.forEach((elem) => answersPoll.removeChild(elem));
+    getPollData();
+  }
+};
 
-document.addEventListener("DOMContentLoaded", getOject);
+document.addEventListener("DOMContentLoaded", getPollData);
 answersPoll.addEventListener("click", handlerPollAlert);
-
-// async function sendJsonPost() {
-//   try {
-//     const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
-//       method: "POST",
-//       headers: {
-//         "content-type": "application/json; charset=UTF-8",
-//       },
-//       body: JSON.stringify(jsonPost),
-//     });
-//     const objPost = await response.json();
-//       console.log(objPost);
-//       handlerPollResalt(objPost)
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-// const handlerPollResalt = ({ stat }) => {
-//     console.log(stat)
-//    const answersBtn = document.createElement("button");
-//     stat.map(elem => {
-//          const divResult = document.createElement('div')
-//         divResult.setAttribute('id', elem.id)
-//         titlePoll.appendChild(divResult)
-//     })}
+poll.addEventListener("click", getPollBtn);

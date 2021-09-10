@@ -9,3 +9,8 @@ body {
 .poll__title {
   margin-bottom: 20px;
 }
+
+.getPollData{
+  position: absolute;
+  top: 220px;
+}
