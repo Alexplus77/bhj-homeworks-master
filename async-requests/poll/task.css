@@ -13,4 +13,5 @@ body {
 .getPollData{
   position: absolute;
   top: 220px;
+  background-color: rgb(231, 35, 35);
 }
