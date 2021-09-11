@@ -16,7 +16,7 @@ const getPollData = async () => {
   }
 };
 
-(function () {
+(() =>{
   const getPollDataBtn = document.createElement("button");
   getPollDataBtn.classList.add("getPollData");
   getPollDataBtn.innerText = "getPollData";
