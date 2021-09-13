@@ -35,23 +35,24 @@ const getDataResponse = async () => {
   }
 };
 
-(() => {
-  
-  const valute = JSON.parse(localStorage.getItem("valute"));
-  Object.values(valute).map(({ CharCode, Value, Name }) =>
+const hendleTextMarkup = (data) => {
+  Object.values(data).map(({ CharCode, Value, Name }) =>
     markupCurrencyItem(CharCode, Value, Name)
   );
+}
+
+(() => {  
+  const valute = JSON.parse(localStorage.getItem("valute"));
+  console.log(valute)
+  if(valute!==null){hendleTextMarkup(valute)}  
   getDataResponse();
 })();
 
 const processingRespons = ({ response: { Valute: data } }) => {
   removeAndClear()
   localStorage.setItem("valute", JSON.stringify(data));
-  return Object.values(data).map(({ CharCode, Value, Name }) =>
-    markupCurrencyItem(CharCode, Value, Name)
-  );
+  return hendleTextMarkup(data)
 };
-
 
 const removeAndClear = () => {
   loader.classList.remove("loader_active");
