@@ -35,6 +35,12 @@ const getDataResponse = async () => {
   }
 };
 
+const handleTextMarkup = (data) => {
+  Object.values(data).map(({ CharCode, Value, Name }) =>
+    markupCurrencyItem(CharCode, Value, Name)
+  );
+}
+
 (() => {
   const valute = JSON.parse(localStorage.getItem("valute"));
   handleTextMarkup(valute)
@@ -47,11 +53,7 @@ const processingRespons = ({ response: { Valute: data } }) => {
   return handleTextMarkup(data)
 };
 
-const handleTextMarkup = (data) => {
-  Object.values(data).map(({ CharCode, Value, Name }) =>
-    markupCurrencyItem(CharCode, Value, Name)
-  );
-}
+
 
 const removeAndClear = () => {
   loader.classList.remove("loader_active");
