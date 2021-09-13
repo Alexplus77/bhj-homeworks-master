@@ -35,24 +35,22 @@ const getDataResponse = async () => {
   }
 };
 
-const handleTextMarkup = (data) => {
-  Object.values(data).map(({ CharCode, Value, Name }) =>
+(() => {
+  
+  const valute = JSON.parse(localStorage.getItem("valute"));
+  Object.values(valute).map(({ CharCode, Value, Name }) =>
     markupCurrencyItem(CharCode, Value, Name)
   );
-}
-
-(() => {
-  const valute = JSON.parse(localStorage.getItem("valute"));
-  handleTextMarkup(valute)
   getDataResponse();
 })();
 
 const processingRespons = ({ response: { Valute: data } }) => {
   removeAndClear()
   localStorage.setItem("valute", JSON.stringify(data));
-  return handleTextMarkup(data)
+  return Object.values(data).map(({ CharCode, Value, Name }) =>
+    markupCurrencyItem(CharCode, Value, Name)
+  );
 };
-
 
 
 const removeAndClear = () => {
