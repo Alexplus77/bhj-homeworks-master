@@ -1,5 +1,4 @@
 const currenciesDiv = document.querySelector("#items");
-const currencyDiv=document.querySelector(".item")
 const loader = document.querySelector(".loader");
 
 const markupCurrencyItem = (code, value) => {
