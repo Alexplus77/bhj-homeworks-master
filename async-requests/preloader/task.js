@@ -1,7 +1,7 @@
 const currenciesDiv = document.querySelector("#items");
 const loader = document.querySelector(".loader");
 
-const markupCurrencyItem = (code, value) => {
+const markupCurrencyItem = (code, value, name) => {
   const itemDiv = document.createElement("div");
   itemDiv.classList.add("item");
   currenciesDiv.appendChild(itemDiv);
@@ -15,6 +15,12 @@ const markupCurrencyItem = (code, value) => {
   itemValue.classList.add("item__value");
   itemValue.innerText = value;
   itemDiv.appendChild(itemValue);
+
+const itemCurrensy = document.createElement("div");
+itemCurrensy.classList.add("item__currency");
+itemCurrensy.innerText = name;
+itemDiv.appendChild(itemCurrensy);
+
 };
 
 const getDataResponse = async () => {
@@ -31,8 +37,8 @@ const getDataResponse = async () => {
 
 (() => {
   const valute = JSON.parse(localStorage.getItem("valute"));
-  Object.values(valute).map(({ CharCode, Value }) =>
-    markupCurrencyItem(CharCode, Value)
+  Object.values(valute).map(({ CharCode, Value, Name }) =>
+    markupCurrencyItem(CharCode, Value, Name)
   );
   getDataResponse();
 })();
@@ -42,7 +48,7 @@ const processingRespons = ({ response: { Valute: data } }) => {
   const currencyDiv = [...document.querySelectorAll(".item")];
   currencyDiv.forEach((elem) => elem.remove());
   localStorage.setItem("valute", JSON.stringify(data));
-  return Object.values(data).map(({ CharCode, Value }) =>
-    markupCurrencyItem(CharCode, Value)
+  return Object.values(data).map(({ CharCode, Value, Name }) =>
+    markupCurrencyItem(CharCode, Value, Name)
   );
 };
