@@ -45,7 +45,8 @@ const getDataResponse = async () => {
 
 const processingRespons = ({ response: { Valute: data } }) => {
   loader.classList.remove("loader_active");
-  const currencyDiv = [...document.querySelectorAll(".item")];
+  localStorage.clear()
+  const currencyDiv = [...document.querySelectorAll(".item")]
   currencyDiv.forEach((elem) => elem.remove());
   localStorage.setItem("valute", JSON.stringify(data));
   return Object.values(data).map(({ CharCode, Value, Name }) =>
