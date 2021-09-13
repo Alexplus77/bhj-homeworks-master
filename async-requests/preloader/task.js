@@ -1,11 +1,12 @@
 const currenciesDiv = document.querySelector("#items");
+const currencyDiv=document.querySelector(".item")
 const loader = document.querySelector(".loader");
 
 const markupCurrencyItem = (code, value) => {
   const itemDiv = document.createElement("div");
   itemDiv.classList.add("item");
   currenciesDiv.appendChild(itemDiv);
-
+  
   const itemCode = document.createElement("div");
   itemCode.classList.add("item__code");
   itemCode.innerText = code;
