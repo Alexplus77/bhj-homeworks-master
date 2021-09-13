@@ -31,7 +31,5 @@ const markupCurrencyItem = (code, value) => {
 
 const processingRespons = ({ response: { Valute: data } }) => {
   loader.classList.remove("loader_active");
-  return  Object.values(data).map(({ CharCode, Value }) => {
-    markupCurrencyItem(CharCode, Value);
-  });
+  return  Object.values(data).map(({ CharCode, Value }) => markupCurrencyItem(CharCode, Value));
 };
