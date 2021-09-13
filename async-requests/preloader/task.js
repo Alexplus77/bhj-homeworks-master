@@ -37,19 +37,25 @@ const getDataResponse = async () => {
 
 (() => {
   const valute = JSON.parse(localStorage.getItem("valute"));
-  Object.values(valute).map(({ CharCode, Value, Name }) =>
-    markupCurrencyItem(CharCode, Value, Name)
-  );
+  handleTextMarkup(valute)
   getDataResponse();
 })();
 
 const processingRespons = ({ response: { Valute: data } }) => {
+  removeAndClear()
+  localStorage.setItem("valute", JSON.stringify(data));
+  return handleTextMarkup(data)
+};
+
+const handleTextMarkup = (data) => {
+  Object.values(data).map(({ CharCode, Value, Name }) =>
+    markupCurrencyItem(CharCode, Value, Name)
+  );
+}
+
+const removeAndClear = () => {
   loader.classList.remove("loader_active");
   localStorage.clear()
   const currencyDiv = [...document.querySelectorAll(".item")]
   currencyDiv.forEach((elem) => elem.remove());
-  localStorage.setItem("valute", JSON.stringify(data));
-  return Object.values(data).map(({ CharCode, Value, Name }) =>
-    markupCurrencyItem(CharCode, Value, Name)
-  );
-};
+}
