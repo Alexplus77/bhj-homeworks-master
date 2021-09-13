@@ -43,8 +43,7 @@ const hendleTextMarkup = (data) => {
 
 (() => {  
   const valute = JSON.parse(localStorage.getItem("valute"));
-  console.log(valute)
-  if(valute!==null){hendleTextMarkup(valute)}  
+    if(valute!==null){hendleTextMarkup(valute)}  
   getDataResponse();
 })();
 
