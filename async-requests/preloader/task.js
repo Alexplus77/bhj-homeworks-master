@@ -30,11 +30,7 @@ const markupCurrencyItem = (code, value, name) => {
   card.insertBefore(btnRefresh, card.children[0]);
 })();
 
-const getDataResponse = async (e) => {
-  if (!e.target.classList.contains("btnRefresh")) {
-    return;
-  }
-  loader.classList.add("loader_active");
+const getDataResponse = async () => {
   try {
     const responseData = await fetch(
       "https://netology-slow-rest.herokuapp.com"
@@ -53,9 +49,15 @@ const handleTextMarkup = (data) => {
 };
 
 (() => {
+  loader.classList.add("loader_active");
   const valute = JSON.parse(localStorage.getItem("valute"));
-  if (valute !== null) {
-    handleTextMarkup(valute);
+  if (valute === null) {
+    getDataResponse();
+  } else {
+    setTimeout(() => {
+      handleTextMarkup(valute);
+      loader.classList.remove("loader_active");
+    }, 1000);
   }
 })();
 
@@ -72,4 +74,12 @@ const removeAndClear = () => {
   currencyDiv.forEach((elem) => elem.remove());
 };
 
-card.addEventListener("click", getDataResponse);
+const refresh = (e) => {
+  loader.classList.add("loader_active");
+  if (!e.target.classList.contains("btnRefresh")) {
+    return;
+  }
+  getDataResponse();
+};
+
+card.addEventListener("click", refresh);
