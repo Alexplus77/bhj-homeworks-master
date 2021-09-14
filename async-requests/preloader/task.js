@@ -51,7 +51,7 @@ const processingResponse = ({ response: { Valute: data } }) => {
   loader.classList.add("loader_active");
   btnRefresh.classList.remove("btnRefresh_active");
   const valute = JSON.parse(localStorage.getItem("valute"));
-  if (valute === null) {
+  if (!valute) {
     getDataResponse();
   } else {
     setTimeout(() => {

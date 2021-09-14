@@ -12,13 +12,16 @@ body {
 .item__value {
   margin-right: 5px;
 }
+.card{
+  min-height: 400px;
+}
 
 .loader {
   position: absolute;
   width: 100px;
   display: none;
   top: 40%;
-  left: 40%;
+  left: 46%;
 }
 .loader_active {
   display: block;
