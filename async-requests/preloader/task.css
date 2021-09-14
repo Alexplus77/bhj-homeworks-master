@@ -21,8 +21,8 @@ body {
   position: absolute;
   width: 100px;
   display: none;
-  top: 40%;
-  left: 46%;
+  top: 50%;
+  left: 50%;
 }
 .loader_active {
   display: block;
