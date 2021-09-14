@@ -1,5 +1,7 @@
 const currenciesDiv = document.querySelector("#items");
 const loader = document.querySelector(".loader");
+const card = document.querySelector(".card")
+
 
 const markupCurrencyItem = (code, value, name) => {
   const itemDiv = document.createElement("div");
@@ -22,19 +24,28 @@ const markupCurrencyItem = (code, value, name) => {
   itemDiv.appendChild(itemCurrensy);
 };
 
-const getDataResponse = async () => {
-  try {
-    const responseData = await fetch(
-      "https://netology-slow-rest.herokuapp.com"
-    );
-    const dataCurrency = await responseData.json();
-    processingRespons(dataCurrency);
-  } catch (error) {
-    console.warn(error);
-  }
+(() => {
+    const btnRefresh = document.createElement('button')
+    btnRefresh.classList.add('btnRefresh')
+    btnRefresh.innerText="Обновите курс валют"
+ card.insertBefore(btnRefresh, card.children[0] );   
+})()
+
+const getDataResponse = async (e) => {
+    if (!e.target.classList.contains("btnRefresh")) { return }
+    loader.classList.add("loader_active");
+      try {
+        const responseData = await fetch(
+          "https://netology-slow-rest.herokuapp.com"
+        );
+        const dataCurrency = await responseData.json();
+        processingResponse(dataCurrency);
+      } catch (error) {
+        console.warn(error);
+      }
 };
 
-const hendleTextMarkup = (data) => {
+const handleTextMarkup = (data) => {
   Object.values(data).map(({ CharCode, Value, Name }) =>
     markupCurrencyItem(CharCode, Value, Name)
   );
@@ -43,15 +54,15 @@ const hendleTextMarkup = (data) => {
 (() => {
   const valute = JSON.parse(localStorage.getItem("valute"));
   if (valute !== null) {
-    hendleTextMarkup(valute);
-  }
-  getDataResponse();
+    handleTextMarkup(valute);
+  } 
 })();
 
-const processingRespons = ({ response: { Valute: data } }) => {
-  removeAndClear();
+const processingResponse = ({ response: { Valute: data } }) => {
+    removeAndClear();
+    console.log(data)
   localStorage.setItem("valute", JSON.stringify(data));
-  return hendleTextMarkup(data);
+  return handleTextMarkup(data);
 };
 
 const removeAndClear = () => {
@@ -60,3 +71,5 @@ const removeAndClear = () => {
   const currencyDiv = [...document.querySelectorAll(".item")];
   currencyDiv.forEach((elem) => elem.remove());
 };
+
+card. addEventListener('click',  getDataResponse)
