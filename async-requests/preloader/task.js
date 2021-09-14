@@ -1,6 +1,6 @@
 const currenciesDiv = document.querySelector("#items");
 const loader = document.querySelector(".loader");
-const card = document.querySelector(".card");
+const btnRefresh = document.querySelector(".btnRefresh");
 
 const markupCurrencyItem = (code, value, name) => {
   const itemDiv = document.createElement("div");
@@ -23,13 +23,6 @@ const markupCurrencyItem = (code, value, name) => {
   itemDiv.appendChild(itemCurrensy);
 };
 
-(() => {
-  const btnRefresh = document.createElement("button");
-  btnRefresh.classList.add("btnRefresh");
-  btnRefresh.innerText = "Обновите курс валют";
-  card.insertBefore(btnRefresh, card.children[0]);
-})();
-
 const getDataResponse = async () => {
   try {
     const responseData = await fetch(
@@ -48,38 +41,42 @@ const handleTextMarkup = (data) => {
   );
 };
 
-(() => {
+const processingResponse = ({ response: { Valute: data } }) => {
+  changeStateActive();
+  localStorage.setItem("valute", JSON.stringify(data));
+  return handleTextMarkup(data);
+};
+
+(() => {    
   loader.classList.add("loader_active");
+  btnRefresh.classList.remove("btnRefresh_active");
   const valute = JSON.parse(localStorage.getItem("valute"));
   if (valute === null) {
     getDataResponse();
   } else {
     setTimeout(() => {
       handleTextMarkup(valute);
-      loader.classList.remove("loader_active");
+      changeStateActive();
     }, 1000);
   }
 })();
 
-const processingResponse = ({ response: { Valute: data } }) => {
-  removeAndClear();
-  localStorage.setItem("valute", JSON.stringify(data));
-  return handleTextMarkup(data);
+const changeStateActive = () => {
+  loader.classList.remove("loader_active");
+  btnRefresh.classList.add("btnRefresh_active");
 };
 
 const removeAndClear = () => {
-  loader.classList.remove("loader_active");
   localStorage.clear();
   const currencyDiv = [...document.querySelectorAll(".item")];
+  btnRefresh.classList.remove("btnRefresh_active");
   currencyDiv.forEach((elem) => elem.remove());
 };
 
-const refresh = (e) => {
+const refresh = () => {
   loader.classList.add("loader_active");
-  if (!e.target.classList.contains("btnRefresh")) {
-    return;
-  }
+  removeAndClear();
   getDataResponse();
 };
 
-card.addEventListener("click", refresh);
+btnRefresh.addEventListener("click", refresh);

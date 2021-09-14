@@ -23,3 +23,10 @@ body {
 .loader_active {
   display: block;
 }
+.btnRefresh{
+  display: none;
+}
+
+.btnRefresh_active{
+  display: block;
+}
