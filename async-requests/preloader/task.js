@@ -1,7 +1,6 @@
 const currenciesDiv = document.querySelector("#items");
 const loader = document.querySelector(".loader");
-const card = document.querySelector(".card")
-
+const card = document.querySelector(".card");
 
 const markupCurrencyItem = (code, value, name) => {
   const itemDiv = document.createElement("div");
@@ -25,24 +24,26 @@ const markupCurrencyItem = (code, value, name) => {
 };
 
 (() => {
-    const btnRefresh = document.createElement('button')
-    btnRefresh.classList.add('btnRefresh')
-    btnRefresh.innerText="Обновите курс валют"
- card.insertBefore(btnRefresh, card.children[0] );   
-})()
+  const btnRefresh = document.createElement("button");
+  btnRefresh.classList.add("btnRefresh");
+  btnRefresh.innerText = "Обновите курс валют";
+  card.insertBefore(btnRefresh, card.children[0]);
+})();
 
 const getDataResponse = async (e) => {
-    if (!e.target.classList.contains("btnRefresh")) { return }
-    loader.classList.add("loader_active");
-      try {
-        const responseData = await fetch(
-          "https://netology-slow-rest.herokuapp.com"
-        );
-        const dataCurrency = await responseData.json();
-        processingResponse(dataCurrency);
-      } catch (error) {
-        console.warn(error);
-      }
+  if (!e.target.classList.contains("btnRefresh")) {
+    return;
+  }
+  loader.classList.add("loader_active");
+  try {
+    const responseData = await fetch(
+      "https://netology-slow-rest.herokuapp.com"
+    );
+    const dataCurrency = await responseData.json();
+    processingResponse(dataCurrency);
+  } catch (error) {
+    console.warn(error);
+  }
 };
 
 const handleTextMarkup = (data) => {
@@ -55,12 +56,11 @@ const handleTextMarkup = (data) => {
   const valute = JSON.parse(localStorage.getItem("valute"));
   if (valute !== null) {
     handleTextMarkup(valute);
-  } 
+  }
 })();
 
 const processingResponse = ({ response: { Valute: data } }) => {
-    removeAndClear();
-    console.log(data)
+  removeAndClear();
   localStorage.setItem("valute", JSON.stringify(data));
   return handleTextMarkup(data);
 };
@@ -72,4 +72,4 @@ const removeAndClear = () => {
   currencyDiv.forEach((elem) => elem.remove());
 };
 
-card. addEventListener('click',  getDataResponse)
+card.addEventListener("click", getDataResponse);
