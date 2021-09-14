@@ -17,8 +17,8 @@ body {
   position: absolute;
   width: 100px;
   display: none;
-  top: 150px;
-  left: 50%;
+  top: 40%;
+  left: 40%;
 }
 .loader_active {
   display: block;
