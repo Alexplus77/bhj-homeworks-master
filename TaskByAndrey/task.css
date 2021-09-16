@@ -2,3 +2,12 @@ h1{
     
 margin-left: 40%;
 }
+img{
+    width: 300px;
+    height: 300px;
+}
+
+.cart{
+    background-color: rgb(187, 173, 173);
+    display: grid;
+}
