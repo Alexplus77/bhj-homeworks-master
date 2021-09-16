@@ -9,11 +9,11 @@ form.onsubmit = (e) => {
   e.preventDefault();
   const xhr = new XMLHttpRequest();
   xhr.open("POST", url);
-  xhr.addEventListener("progress", (e) => {
-    progress.value = e.loaded / 1000000;
+    xhr.addEventListener("progress", (e) => {     
+        progress.value = e.loaded / 1000000;        
   });
-
   const formData = new FormData(form);
-  xhr.send(formData);
+    xhr.send(formData);
+    progress.value=0
 };
 
