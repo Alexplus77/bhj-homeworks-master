@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
@@ -19,24 +19,24 @@ img {
   max-width: 190px;
   max-height: 170px;
 }
-main{
-  position: relative; 
+main {
+  position: relative;
 }
 
-main::after{
-  content: '';
+main::after {
+  content: "";
   position: absolute;
   background-color: black;
   opacity: 0.6;
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0;  
+  right: 0;
 }
 
 .background {
-  position: absolute; 
-   background-image: url(https://wmpics.pics/di-BX32.jpg);  
+  position: absolute;
+  background-image: url(https://wmpics.pics/di-BX32.jpg);
   top: 0;
   bottom: 0;
   left: 0;
@@ -44,13 +44,14 @@ main::after{
   filter: blur(5px);
   z-index: 0;
 }
-.container {  
-  position: relative; 
-   max-width: 1117px;
+.container {
+  position: relative;
+  max-width: 1117px;
   margin: 0 auto;
+  right: 6%;
   padding-top: 50px;
   padding-bottom: 50px;
-   z-index: 10;
+  z-index: 10;
 }
 
 .carts {
@@ -65,22 +66,58 @@ main::after{
   padding: 1rem;
   background-color: antiquewhite;
   text-align: center;
-  font-size: 17px;
 }
 
 @media screen and (max-width: 1330px) {
+  h1 {
+    margin-left: 30%;
+  }
+  .container {
+    max-width: 1030px;
+    right: 0;
+  }
   .carts {
     grid-template-columns: repeat(4, 250px);
   }
 }
 
 @media screen and (max-width: 1068px) {
+  h1 {
+    margin-left: 20%;
+  }
+  .container {
+    max-width: 800px;
+    right: 0;
+  }
   .carts {
     grid-template-columns: repeat(3, 250px);
   }
 }
 @media screen and (max-width: 803px) {
+  h1 {
+    margin-left: 15%;
+  }
+  .container {
+    max-width: 500px;
+    right: 0;
+  }
   .carts {
     grid-template-columns: repeat(2, 250px);
+  }
+}
+
+@media screen and (max-width: 540px) {
+  h1 {
+    margin-left: 1%;
+    width: 230px;
+
+    font-size: 25px;
+  }
+  .container {
+    max-width: 260px;
+    right: 0;
+  }
+  .carts {
+    grid-template-columns: 250px;
   }
 }
