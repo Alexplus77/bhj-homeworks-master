@@ -6,7 +6,7 @@ const getDataCotaile = async () => {
         const response = await fetch(url)
         const data = await response.json()
 processingResponse(data)
-        console.log(data)
+       
     } catch (error) {
         console.log(error)
     }    
@@ -31,7 +31,8 @@ const renderCocktailMarkup =(img, title)=>{
 }
 
 const processingResponse = ({ drinks }) => {
-    drinks.forEach(coctail => {
-        renderCocktailMarkup(coctail.strDrinkThumb, coctail.strDrink);
+    
+    drinks.forEach(({strDrinkThumb, strDrink}) => {
+        renderCocktailMarkup(strDrinkThumb, strDrink);
     })
 }
