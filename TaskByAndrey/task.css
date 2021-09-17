@@ -9,6 +9,8 @@ img{
    max-width:  170px;
     max-height:  170px;
 }
+
+
  .carts{    
     display: grid;
     gap: 1rem ;
@@ -23,5 +25,24 @@ img{
     background-color: antiquewhite;
     font-size: 17px;
    
+}
+@media screen and  (max-width: 1330px){
+    .carts  {
+        grid-template-columns:repeat(4, 250px);
+    }
+    
+}
+
+@media screen and  (max-width: 1068px){
+    .carts  {
+        grid-template-columns:repeat(3, 250px);
+    }
+    
+}
+@media screen and  (max-width: 803px){
+    .carts  {
+        grid-template-columns:repeat(2, 250px);
+    }
+    
 }
 
