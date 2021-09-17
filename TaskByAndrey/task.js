@@ -19,14 +19,15 @@ const renderCocktailMarkup =(img, title)=>{
     divCart.classList.add('cart')
     carts.appendChild(divCart)
 
+
     const image = document.createElement('img')
-        image.setAttribute('src', img)
-    divCart.appendChild(image)
+    image.setAttribute('src', img)
+        divCart.appendChild(image)
 
     const titleCoctail = document.createElement('div')
     titleCoctail.classList.add('title')
     titleCoctail.innerText = title;
-    divCart.appendChild(titleCoctail)
+       divCart.appendChild(titleCoctail)
 }
 
 const processingResponse = ({ drinks }) => {

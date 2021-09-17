@@ -5,7 +5,7 @@ h1 {
   margin-left: 40%;
   width: 400px;
   text-align: center;
-   border: 2px solid rgb(17, 16, 17);
+  border: 2px solid rgb(17, 16, 17);
   border-radius: 10px;
 }
 img {
@@ -13,21 +13,28 @@ img {
   max-height: 170px;
 }
 
+.container {
+  background-image: url(https://wmpics.pics/di-BX32.jpg);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
 
 .carts {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(5, 250px);
-  background-image: url(https://wmpics.pics/di-BX32.jpg);
 }
 
-.carts > * {
+.cart {
   border: 2px solid rgb(17, 16, 17);
   border-radius: 10px;
   padding: 1rem;
   background-color: antiquewhite;
+  text-align: center;
   font-size: 17px;
 }
+
 @media screen and (max-width: 1330px) {
   .carts {
     grid-template-columns: repeat(4, 250px);
