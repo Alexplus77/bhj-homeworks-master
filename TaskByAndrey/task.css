@@ -18,7 +18,7 @@ img {
   position: absolute;
   background-color: black;
   width: 100%;
-  height: 770vh;
+  height: 780vh;
   opacity: 0.6;
   z-index: 1;
 }
@@ -26,7 +26,7 @@ img {
   position: absolute;
   background-image: url(https://wmpics.pics/di-BX32.jpg);
   width: 100%;
-  height: 770vh;
+  height: 780vh;
   filter: blur(3px);
   z-index: 0;
 }
