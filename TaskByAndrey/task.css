@@ -5,19 +5,36 @@ h1 {
   margin-left: 40%;
   width: 400px;
   text-align: center;
-  border: 2px solid rgb(17, 16, 17);
+  color: aliceblue;
+  border: 2px solid rgb(252, 247, 252);
   border-radius: 10px;
 }
 img {
-  max-width: 170px;
+  max-width: 190px;
   max-height: 170px;
 }
-
-.container {
+.background-black {
+  position: absolute;
+  background-color: black;
+  width: 100%;
+  height: 770vh;
+  opacity: 0.6;
+  z-index: 1;
+}
+.background {
+  position: absolute;
   background-image: url(https://wmpics.pics/di-BX32.jpg);
+  width: 100%;
+  height: 770vh;
+  filter: blur(3px);
+  z-index: 0;
+}
+.container {
+  position: absolute;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  z-index: 2;
 }
 
 .carts {
