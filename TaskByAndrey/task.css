@@ -1,48 +1,46 @@
-body{
-    font-family: 'Roboto', sans-serif;
+body {
+  font-family: "Roboto", sans-serif;
 }
-h1{
-    
-margin-left: 40%;
+h1 {
+  margin-left: 40%;
+  width: 400px;
+  text-align: center;
+   border: 2px solid rgb(17, 16, 17);
+  border-radius: 10px;
 }
-img{
-   max-width:  170px;
-    max-height:  170px;
-}
-
-
- .carts{    
-    display: grid;
-    gap: 1rem ;
-    grid-template-columns: repeat(5, 250px);    
+img {
+  max-width: 170px;
+  max-height: 170px;
 }
 
+
+.carts {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(5, 250px);
+  background-image: url(https://wmpics.pics/di-BX32.jpg);
+}
 
 .carts > * {
-    border: 2px solid rgb(17, 16, 17);
-    border-radius: 10px;
-    padding: 1rem;
-    background-color: antiquewhite;
-    font-size: 17px;
-   
+  border: 2px solid rgb(17, 16, 17);
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: antiquewhite;
+  font-size: 17px;
 }
-@media screen and  (max-width: 1330px){
-    .carts  {
-        grid-template-columns:repeat(4, 250px);
-    }
-    
+@media screen and (max-width: 1330px) {
+  .carts {
+    grid-template-columns: repeat(4, 250px);
+  }
 }
 
-@media screen and  (max-width: 1068px){
-    .carts  {
-        grid-template-columns:repeat(3, 250px);
-    }
-    
+@media screen and (max-width: 1068px) {
+  .carts {
+    grid-template-columns: repeat(3, 250px);
+  }
 }
-@media screen and  (max-width: 803px){
-    .carts  {
-        grid-template-columns:repeat(2, 250px);
-    }
-    
+@media screen and (max-width: 803px) {
+  .carts {
+    grid-template-columns: repeat(2, 250px);
+  }
 }
-
