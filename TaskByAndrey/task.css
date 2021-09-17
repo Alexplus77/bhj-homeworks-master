@@ -64,7 +64,7 @@ main::after {
   border: 2px solid rgb(17, 16, 17);
   border-radius: 10px;
   padding: 1rem;
-  background-color: antiquewhite;
+  background-color: rgba(250, 235, 215, 0.712);
   text-align: center;
 }
 
