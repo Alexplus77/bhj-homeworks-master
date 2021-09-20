@@ -45,3 +45,6 @@
   display: block;
   text-align: center;
 }
+.logoutHide{
+  display: none;
+}
