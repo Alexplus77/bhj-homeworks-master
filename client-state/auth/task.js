@@ -31,8 +31,7 @@ const validateUser = ({ success, user_id }) => {
   if (success) {
     if (checkbox.children[0].checked) {
       localStorage.setItem("userId", JSON.stringify(user_id));
-      }
-      
+      }      
     onSetGreeting(user_id);
   } else {
     alert("Неверный логин/пароль");
