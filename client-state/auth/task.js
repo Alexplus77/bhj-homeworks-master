@@ -20,7 +20,7 @@ const sendForm = async (e) => {
   }
 };
 
-const onSetGriting = (text) => {
+const onSetGreeting = (text) => {
   form.closest(".signin").classList.remove("signin_active");
   logoutBtn.classList.remove("logoutHide");
   greeting.classList.add("welcome_active");
@@ -33,7 +33,7 @@ const validateUser = ({ success, user_id }) => {
       localStorage.setItem("userId", JSON.stringify(user_id));
       }
       
-    onSetGriting(user_id);
+    onSetGreeting(user_id);
   } else {
     alert("Неверный логин/пароль");
     form.reset();
@@ -50,7 +50,7 @@ const logoutUser = () => {
 (() => {
   const userId = JSON.parse(localStorage.getItem("userId"));
   if (userId) {
-    onSetGriting(userId);
+    onSetGreeting(userId);
   }
 })();
 
