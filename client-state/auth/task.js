@@ -9,18 +9,18 @@ const url = "https://netology-slow-rest.herokuapp.com/auth.php";
 const sendForm = async (e) => {
   try {
     e.preventDefault();
-    const respons = await fetch(url, {
+    const response = await fetch(url, {
       method: "POST",
       body: new FormData(form),
     });
-    const data = await respons.json();
+    const data = await response.json();
     validateUser(data);
   } catch (error) {
     console.log(error);
   }
 };
 
-const onsetGriting = (text) => {
+const onSetGriting = (text) => {
   form.closest(".signin").classList.remove("signin_active");
   logoutBtn.classList.remove("logoutHide");
   greeting.classList.add("welcome_active");
@@ -33,7 +33,7 @@ const validateUser = ({ success, user_id }) => {
       localStorage.setItem("userId", JSON.stringify(user_id));
       }
       
-    onsetGriting(user_id);
+    onSetGriting(user_id);
   } else {
     alert("Неверный логин/пароль");
     form.reset();
@@ -50,7 +50,7 @@ const logoutUser = () => {
 (() => {
   const userId = JSON.parse(localStorage.getItem("userId"));
   if (userId) {
-    onsetGriting(userId);
+    onSetGriting(userId);
   }
 })();
 
