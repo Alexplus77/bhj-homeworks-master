@@ -23,10 +23,11 @@ const removeText = () => {
 
 (() => {
   removeBtn.disabled = false
-   removeBtn.style.cursor = "pointer";
+  
   card.children[0].value = JSON.parse(localStorage.getItem("value"));
   if (card.children[0].value.trim()) {
     removeBtn.classList.remove("removeHide");
+     removeBtn.style.cursor = "pointer";
   }
 })();
 
