@@ -2,7 +2,8 @@ const card = document.querySelector(".card");
 const removeBtn = document.querySelector(".remove");
 
 const saveText = () => {
-    removeBtn.disabled = false;
+  removeBtn.disabled = false;
+  removeBtn.style.cursor = 'pointer';
   const text = card.children[0].value;
   localStorage.setItem("value", JSON.stringify(text));
   removeBtn.classList.remove("removeHide");
@@ -16,11 +17,13 @@ const removeText = () => {
   localStorage.clear();
     card.children[0].value = "";     
     removeBtn.classList.add("removeHide");
-    removeBtn.disabled=true
+  removeBtn.disabled = true
+  removeBtn.style.cursor = "default";
     };
 
 (() => {
-    removeBtn.disabled=false
+  removeBtn.disabled = false
+   removeBtn.style.cursor = "pointer";
   card.children[0].value = JSON.parse(localStorage.getItem("value"));
   if (card.children[0].value.trim()) {
     removeBtn.classList.remove("removeHide");
