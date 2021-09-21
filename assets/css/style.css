@@ -82,7 +82,7 @@ button {
   border: 1px solid transparent;
   border-radius: 2px;
   box-sizing: border-box;
-  cursor: pointer;
+  cursor: default;
   display: inline-block;
   margin: 0 3px 20px 0;
   overflow: hidden;
