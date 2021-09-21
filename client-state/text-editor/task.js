@@ -17,9 +17,6 @@ const removeText = () => {
     removeBtn.classList.add("removeHide");
 }
 
-const valideteTextArea = () => {
-    
-}
 
 (() => {
     card.children[0].value = JSON.parse(localStorage.getItem('value'))
