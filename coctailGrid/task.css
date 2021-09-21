@@ -48,7 +48,7 @@ main::after {
 .container {
   position: relative;
   max-width: 1117px;
-  grid-column: 2/3;
+ grid-column: 2/3;
   right: 6%;
   padding-top: 50px;
   padding-bottom: 50px;
