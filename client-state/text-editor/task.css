@@ -10,5 +10,9 @@ textarea {
 }
 
 .removeHide{
-  display: none;
+  background-color: rgb(129, 128, 125);
+  
+}
+.removeHide:hover{
+  background-color: rgb(129, 128, 125);
 }
