@@ -2,23 +2,25 @@ const card = document.querySelector(".card");
 const removeBtn = document.querySelector(".remove");
 
 const saveText = () => {
+    removeBtn.disabled = false;
   const text = card.children[0].value;
   localStorage.setItem("value", JSON.stringify(text));
   removeBtn.classList.remove("removeHide");
-  if (!text.trim()) {
-    removeBtn.classList.add("removeHide");
-    removeBtn.setAttribute("disabled");
+  if (!text.trim() ) {
+    removeText()
   }
 };
 
-const removeText = () => {
+
+const removeText = () => {    
   localStorage.clear();
     card.children[0].value = "";     
     removeBtn.classList.add("removeHide");
-    removeBtn.setAttribute("disabled");
-};
+    removeBtn.disabled=true
+    };
 
 (() => {
+    removeBtn.disabled=false
   card.children[0].value = JSON.parse(localStorage.getItem("value"));
   if (card.children[0].value.trim()) {
     removeBtn.classList.remove("removeHide");
