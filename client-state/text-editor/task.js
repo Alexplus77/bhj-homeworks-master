@@ -6,7 +6,7 @@ const saveText = () => {
     const text = card.children[0].value
     localStorage.setItem('value', JSON.stringify(text))
     removeBtn.classList.remove('removeHide')
-    if (!card.children[0].value.trim()) {
+    if (!text.trim()) {
       removeBtn.classList.add("removeHide");
     }  
 }
