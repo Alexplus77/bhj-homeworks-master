@@ -13,8 +13,9 @@ const saveText = () => {
 
 const removeText = () => {
   localStorage.clear();
-  card.children[0].value = "";
-  removeBtn.classList.add("removeHide");
+    card.children[0].value = "";     
+    removeBtn.classList.add("removeHide");
+    removeBtn.setAttribute("disabled");
 };
 
 (() => {
